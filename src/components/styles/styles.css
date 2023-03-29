@@ -1,0 +1,86 @@
+:root {
+    --uiFont: 'Lato', sans-serif;
+    --txtFont: 'Noto Sans', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--txtFont);
+}
+
+.App {
+    min-height: 100vh;
+    justify-content: center;
+    display: flex;
+}
+
+#top-section-container {
+    background-color: blue;
+}
+
+#top-nav-div {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--uiFont);
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.navMenu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.top-sect-header-txt {
+    text-align: center;
+    max-width: 460px;
+    display: flex;
+}
+
+.top-nav-container {
+    border-bottom: 2px solid black;
+}
+
+.top-nav-container, .bot-nav-container {
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 0 auto;
+    
+}
+
+.top-section-headers-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+
+@media screen and (min-width:1024px) {
+    #top-section-container {
+        
+    }
+    .top-sect-header-txt {
+        
+    }
+}
+
+@media screen and (max-width:1024px){
+    
+}
+
+
+@media screen and (min-width: 320px) {
+    
+}
