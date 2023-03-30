@@ -5,7 +5,7 @@ require('dotenv').config()
  */
 module.exports = {
   siteMetadata: {
-    title: `HLCMS Blog`,
+    title: `HLCMS Affiliate Blog`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [

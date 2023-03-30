@@ -1,6 +1,12 @@
 :root {
     --uiFont: 'Lato', sans-serif;
     --txtFont: 'Noto Sans', sans-serif;
+
+    --bgColor: #1B262C;
+    --btnsNinter: #0F4C75;
+    --sectionDColor: #3282B8;
+    --secondaryUiColor: #BBE1FA;
+    --lightTxt: #e5e5e5;
 }
 
 
@@ -21,7 +27,7 @@ body {
 }
 
 #top-section-container {
-    background-color: blue;
+    background-color: var(--bgColor);
 }
 
 #top-nav-div {
@@ -47,15 +53,16 @@ body {
 }
 
 .top-nav-container {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--lightTxt);
 }
 
 .top-nav-container, .bot-nav-container {
     max-width: 1024px;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--bgColor);
     margin: 0 auto;
+    color: #e5e5e5;
     
 }
 
@@ -65,6 +72,83 @@ body {
     align-items: center;
     padding: 10px;
 }
+
+.tag-list {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.tag-list > li {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0px 5px 0px 5px;
+    border: 1px solid var(--secondaryUiColor);
+    background-color: var(--sectionDColor);
+}
+
+#searchBtn {
+    background: inherit;
+    border: 0;
+    color: var(--lightTxt);
+    align-items: center;
+    display: flex;
+}
+
+.bot-nav-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 20px;
+    gap: 40px;
+}
+
+.card-img-container {
+    
+    margin-bottom: 10px;
+    max-width: 500px;
+    min-height: 200px;
+    aspect-ratio: 16/9;
+}
+
+.card-author-avatar {
+    max-width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.gatsby-image-wrapper {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
+
+
+.card-excerpt {
+    overflow: hidden;
+    white-space: initial;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    margin-bottom: 10px;
+}
+
+.card-author-block {
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.bot-nav-cards {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+
+
 
 
 @media screen and (min-width:1024px) {
