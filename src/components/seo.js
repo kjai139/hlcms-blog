@@ -1,11 +1,27 @@
 import * as React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 
 
-const Seo = () => {
+const Seo = ({title, description, siteUrl}) => {
+
+    const data = useStaticQuery(graphql`
+        query {
+            site {
+                siteMetadata {
+                    title
+                    description
+                    siteUrl
+                }
+            }
+        }
+    `)
+
+
+
     return (
         <>
-        <title>Tempeory title in head</title>
-        <meta name='description' content="temp desc"></meta>
+        <title>{title? title : data.site.siteMetadata.title}</title>
+        <meta name='description' content={description? description : data.site.siteMetadata.description}></meta>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
