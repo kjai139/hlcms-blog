@@ -1,9 +1,10 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import Seo from '../../components/seo'
-import Topblock from '../../components/topblock'
+import Seo from '../../../components/seo'
+import Topblock from '../../../components/topblock'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import defaultImage from "../../images/default-portrait.jpg"
+import defaultImg from "../../../images/default-portrait.jpg"
+import { Link } from 'gatsby'
 
 
 const CategoryPost = (props) => {
@@ -17,9 +18,10 @@ const CategoryPost = (props) => {
                 <Topblock inCat={true} curPage={data.contentfulCategories.slug}></Topblock>
             </div>
             <div className='cata-content-container'>
-            {data.contentfulCategories.blog_post.map((node) => {
+            {data.contentfulCategories.blog_post ? data.contentfulCategories.blog_post.map((node) => {
                 return (
-                    <div className="bot-nav-cards" key={node.contentful_id}>
+                    <Link className="post-links" to={`/${node.slug}`} key={node.contentful_id}>
+                    <div className="bot-nav-cards">
                     <div className="card-img-container">
                     {node.thumbnail && <GatsbyImage image={node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
                     </div>
@@ -34,7 +36,7 @@ const CategoryPost = (props) => {
                     </p>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
-                    {node.authorRef ? <GatsbyImage image={node.authorRef.gatsbyImageData} alt={node.author ? node.author[0] : undefined} />: <StaticImage src="../../images/default-portrait.jpg" alt={node.author ? node.author[0] : 'author avatar'}></StaticImage>}
+                    {node.authorRef ? <GatsbyImage image={node.authorRef.gatsbyImageData} alt={node.author ? node.author[0] : undefined} />: <StaticImage src="../../../images/default-portrait.jpg" alt={node.author ? node.author[0] : 'author avatar'}></StaticImage>}
                         
                         </div>
                         <div className="card-author-name">
@@ -45,8 +47,10 @@ const CategoryPost = (props) => {
                     </div>
 
                 </div>
+                </Link>
                 )
-            })}
+                
+            }): 'No content'}
             </div>
         </div>
     )
