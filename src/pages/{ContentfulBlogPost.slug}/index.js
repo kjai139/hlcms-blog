@@ -59,7 +59,7 @@ const BlogPosts = (props) => {
       <div id="App"> 
       <div id="top-section-container">
         <Topblock headerTitle={props.data.contentfulBlogPost.postTitle}></Topblock>
-        {props.data.contentfulBlogPost.thumbnail && <div className='post-thumbnail'><GatsbyImage image={props.data.contentfulBlogPost.thumbnail.gatsbyImageData} /></div>}
+        {props.data.contentfulBlogPost.thumbnail && <div className='post-thumbnail'><GatsbyImage image={props.data.contentfulBlogPost.thumbnail.gatsbyImageData} alt={props.data.contentfulBlogPost.thumbnail.description}/></div>}
       </div>
       <div className='blogpost-body-container'>
         {props.data.contentfulBlogPost.body && renderRichText(props.data.contentfulBlogPost.body, options)}
@@ -85,6 +85,7 @@ export const query = graphql`
         createdAt
         thumbnail {
           gatsbyImageData
+          description
         }
       }
     }

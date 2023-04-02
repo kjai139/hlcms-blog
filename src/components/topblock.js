@@ -1,6 +1,7 @@
 
 import * as React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
+import Searchbar from "./searchbar"
 
 
 
@@ -32,22 +33,23 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false}) => {
                 </div>
                 <nav id="top-nav-container">
                     <ul className="navMenu">
-                        <li className={curPage == 'reviews' ? 'selected' : undefined}><Link to={inCat ? '../reviews' : '../categories/reviews'}>
+                        <li className={curPage === 'reviews' ? 'selected' : undefined}><Link to={inCat ? '../reviews' : '../categories/reviews'}>
                             Reviews
                             </Link>
                         </li>
-                        <li className={curPage == 'best-picks' ? 'selected' : undefined}><Link to={inCat ? '../best-picks' : '../categories/best-picks'}>
+                        <li className={curPage === 'best-picks' ? 'selected' : undefined}><Link to={inCat ? '../best-picks' : '../categories/best-picks'}>
                             Best Picks
                             </Link>
                         </li>
-                        <li className={curPage == 'creator-highlights' ? 'selected' : undefined}><Link to={inCat ? '../creator-highlights' : '../categories/creator-highlights'}>
+                        <li className={curPage === 'creator-highlights' ? 'selected' : undefined}><Link to={inCat ? '../creator-highlights' : '../categories/creator-highlights'}>
                             Creator Highlights
                             </Link>
                         </li>
                         <li>
-                            <button id="searchBtn">
+                            <Searchbar />
+                            {/* <button id="searchBtn">
                                 <span className="material-symbols-outlined">search</span>
-                            </button>
+                            </button> */}
                         </li>
                     </ul>
 

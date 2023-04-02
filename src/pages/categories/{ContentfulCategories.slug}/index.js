@@ -15,10 +15,10 @@ const CategoryPost = (props) => {
     return (
         <div id="App"> 
             <div id="top-section-container">
-                <Topblock inCat={true} curPage={data.contentfulCategories.slug}></Topblock>
+                <Topblock inCat={true} curPage={data.contentfulCategories.slug} headerTitle={data.contentfulCategories.categoryName}></Topblock>
             </div>
             <div className='cata-content-container'>
-            {data.contentfulCategories.blog_post ? data.contentfulCategories.blog_post.map((node) => {
+            {data.contentfulCategories.blogpost ? data.contentfulCategories.blogpost.map((node) => {
                 return (
                     <Link className="post-links" to={`/${node.slug}`} key={node.contentful_id}>
                     <div className="bot-nav-cards">
@@ -62,9 +62,10 @@ export const query = graphql`
         contentfulCategories(id: {eq: $id}) {
         slug
         categoryName
-        blog_post {
+    
+        blogpost {
             postTitle
-            slug
+            slug  
             contentful_id
             thumbnail {
                 gatsbyImageData

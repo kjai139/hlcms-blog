@@ -27,5 +27,45 @@ module.exports = {
         path: `${__dirname}/src/images`
       },
     },
+    {
+      resolve: `gatsby-plugin-flexsearch`,
+      options: {
+        languages: ['en'],
+        type: "ContentfulBlogPost",
+        fields: [
+          {
+            name: 'postTitle',
+            indexed:true,
+            resolver: 'postTitle',
+            attributes: {
+              encode: 'balance',
+              tokenize: 'full',
+              threshold: 6,
+              depth: 3,
+
+            },
+            store:true,
+          },
+          {
+            name: 'excerpt',
+            indexed: true,
+            resolver: 'excerpt',
+            attributes: {
+              encode: 'balance',
+              tokenize: 'full',
+              threshold: 6,
+              depth: 3,
+            },
+            store:true,
+          },
+          {
+            name: 'slug',
+            resolver: 'slug',
+            store:true,
+            
+          },
+        ],
+      },
+    },
   ]
 }
