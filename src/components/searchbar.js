@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react'
 
 
 const Searchbar = () => {
-    const [query, setQuery] = useState('tyler1')
+    const [query, setQuery] = useState('')
     const [results, setResults] = useState([])
 
-    // const [isSearchOpen, setisSearchOpen] = useState(false)
+    const [isSearchOpen, setisSearchOpen] = useState(false)
 
     // const [isSearchLoading, setisSearchLoading] = useState(false)
 
@@ -22,13 +22,15 @@ const Searchbar = () => {
     console.log(window.__FLEXSEARCH__.en.store)
 
     const getSearchResults = (query) => {
+        
         let index = window.__FLEXSEARCH__.en.index
         let store = window.__FLEXSEARCH__.en.store
 
-        if (!query || !index) {
+        if (!index) {
             return []
         } else {
-            setResults([])
+            
+            
             let results = []
             Object.keys(index).forEach(idx => {
                 results.push(...index[idx].values.search(query))
@@ -41,14 +43,24 @@ const Searchbar = () => {
             console.log(nodes)
             setResults(nodes)
             setIsResultOut(true)
+            console.log(query)
+            console.log(results)
             
         }
     }
 
     const toggleMenuOpen = () => {
-        setIsResultOut(!isResultOut)
+        setIsResultOut(false)
+        
     }
     
+    const handleInputChange = (e) => {
+        setResults([])
+        const value = e.target.value
+        setQuery(value)
+        console.log('query set to', query, e.target.value)
+        getSearchResults(value)
+    }
     
     
     useEffect( () => {
@@ -57,6 +69,7 @@ const Searchbar = () => {
             if (event.key === 'Escape' && overlayRef.current) {
                 event.preventDefault()
                 setIsResultOut(false)
+                
             }
         }
 
@@ -73,13 +86,16 @@ const Searchbar = () => {
         <div className='search-btn-container'>
         <form className='search-btn-div'>
             
-        <input type="text" placeholder='Enter keywords here...'>
+        <input type="text" placeholder={ isSearchOpen ? 'Enter keywords here...' : null} onInput={handleInputChange} value={query} className={ isSearchOpen ? "search-bar" : 'search-bar inactive'}>
         </input>
         <button id="searchBtn" onClick={(e) => {
             e.preventDefault()
-           
+           setQuery('')
             
-            getSearchResults(query)
+            setisSearchOpen(!isSearchOpen)
+            if (isResultOut === true ){
+                setIsResultOut(false)
+            }
         }}>
             <span className="material-symbols-outlined">search</span>
         </button>
@@ -90,7 +106,7 @@ const Searchbar = () => {
                 <ul className='searchResult-list'>
                 {results.length > 0 && isResultOut ? results.map((node) => {
                     return (
-                        <li>
+                        <li key={node.contentful_id}>
                             {node.postTitle}
                         </li>
                     )

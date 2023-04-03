@@ -39,7 +39,7 @@ module.exports = {
             resolver: 'postTitle',
             attributes: {
               encode: 'balance',
-              tokenize: 'full',
+              tokenize: 'forward',
               threshold: 6,
               depth: 3,
 
@@ -48,7 +48,7 @@ module.exports = {
           },
           {
             name: 'excerpt',
-            indexed: true,
+            indexed: false,
             resolver: 'excerpt',
             attributes: {
               encode: 'balance',
@@ -63,6 +63,11 @@ module.exports = {
             resolver: 'slug',
             store:true,
             
+          },
+          {
+            name: 'contentful_id',
+            resolver: 'contentful_id',
+            store:true, 
           },
         ],
       },

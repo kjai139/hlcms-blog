@@ -61,7 +61,7 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false}) => {
                         {headerTitle ? headerTitle : 'The affiliate site'}
                     </h1>
                     <p className="top-sect-header-txt">
-                        {headerTxt? headerTxt : 'Make cash money by having people click on the links to buy shit on the website'}
+                        {headerTxt? headerTxt : null}
                     </p>
                 </div>
             </div>

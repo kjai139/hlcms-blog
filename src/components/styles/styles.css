@@ -228,6 +228,10 @@ a:visited {
     display:flex;
 }
 
+.search-btn-div > input {
+    padding-left: 3px;
+}
+
 .search-btn-div > input, .searchbtn-div > button, .search-result-div {
     z-index: 9991;
 }
@@ -258,6 +262,38 @@ a:visited {
     padding: 3px;
     border: 1px solid var(--secondaryUiColor);
 }
+
+.search-bar.inactive {
+    width: 0;
+    border: 0;
+    padding: 0;
+    
+    
+    
+}
+
+.search-bar {
+    width: 185px;
+    padding: 3px;
+    transition-property: width;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+    
+    
+   
+}
+
+@keyframes search-grow {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
 
 
 @media screen and (min-width:1024px) {

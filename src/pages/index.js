@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock curPage="home" />
+        <Topblock curPage="home" headerTxt="make cash money" />
         <TopPosts />
       </div>
     <BotBlock />
