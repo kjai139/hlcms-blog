@@ -18,8 +18,8 @@ const Searchbar = () => {
 
     
 
-    console.log(window.__FLEXSEARCH__.en.index)
-    console.log(window.__FLEXSEARCH__.en.store)
+    console.log(window.__FLEXSEARCH__.en.index, 'search index')
+    console.log(window.__FLEXSEARCH__.en.store, 'the searchbar store')
 
     const getSearchResults = (query) => {
         
