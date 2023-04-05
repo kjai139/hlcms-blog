@@ -3,7 +3,7 @@ import * as React from 'react'
 import Seo from '../../../components/seo'
 import Topblock from '../../../components/topblock'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import defaultImg from "../../../images/default-portrait.jpg"
+
 import { Link } from 'gatsby'
 
 

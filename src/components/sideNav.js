@@ -8,9 +8,10 @@ const SideNavBar = ({contentArr}) => {
     const [activeSectionId, setActiveSectionId] = useState()
 
     useEffect( () => {
-        const sectionElements = document.getElementsByTagName('h2')
-        console.log(sectionElements)
-        const ids = Array.from(sectionElements).map((section) => 
+        console.log(contentArr, 'contentArr')
+        
+       
+        const ids = Array.from(contentArr).map((section) => 
             section.id
         )
 
@@ -52,7 +53,10 @@ const SideNavBar = ({contentArr}) => {
             <h6 className='side-nav-title'>Content</h6>
             <ul className='content-side-nav'>
                 {sectionIds.length > 0 ? sectionIds.map((section, index) => {
-                    console.log(contentArr[index].sectionTitle, 'sectionTitle')
+                    if (contentArr[index]) {
+                        console.log(contentArr[index].sectionTitle, 'sectionTitle')
+                    }
+                    
 
                     return <li key={section}>
                         <button className='side-nav-btn' onClick={() => handleViewChange(section)}>{contentArr[index].sectionTitle}</button>
