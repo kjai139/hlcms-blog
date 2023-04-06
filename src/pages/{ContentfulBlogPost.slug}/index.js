@@ -135,8 +135,12 @@ const BlogPosts = (props) => {
       </div>
       <div className='blogpost-body-container'>
         <SideNavBar contentArr={contentArr} />
+        <div className='blogpost-center'>
         {props.data.contentfulBlogPost.body && renderRichText(props.data.contentfulBlogPost.body, options)}
+        </div>
+        <div className='blogpost-ad-block'>
 
+        </div>
       </div>
       </div>
     )
