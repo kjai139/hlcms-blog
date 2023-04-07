@@ -26,12 +26,12 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false}) => {
     console.log(inCat, curPage)
     return (
         
-            <div className="top-nav-container">
+            <header className="top-nav-container">
             <div id="top-nav-div">
                 <div id="site-logo">
                     <div><Link to="/">Site Logo</Link></div>
                 </div>
-                <nav id="top-nav-container">
+                <nav id="top-nav">
                     <ul className="navMenu">
                         <li className={curPage === 'reviews' ? 'selected' : undefined}><Link to={inCat ? '../reviews' : '../categories/reviews'}>
                             Reviews
@@ -65,7 +65,7 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false}) => {
                     </p>
                 </div>
             </div>
-            </div>
+            </header>
             
         
     )

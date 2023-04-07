@@ -4,6 +4,7 @@ import Seo from "../components/seo"
 import "../components/styles/styles.css"
 import BotBlock from "../components/botblock"
 import TopPosts from "../components/topposts"
+import Footer from "../components/footer"
 
 const HomePage = () => {
 
@@ -16,6 +17,10 @@ const HomePage = () => {
         <TopPosts />
       </div>
     <BotBlock />
+    <footer id="footer-section-container">
+      <Footer />
+
+    </footer>
     </div>
   )
 }
