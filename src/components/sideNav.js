@@ -65,8 +65,8 @@ const SideNavBar = ({contentArr}) => {
                     }
                     
 
-                    return <li key={section} className={index + 1 === viewId ? 'selected' : null}>
-                        <button className='side-nav-btn' data-indexnum={`btn-${index + 1}`} onClick={() => handleViewChange(section)}>{contentArr[index].sectionTitle}</button>
+                    return <li key={section} className={index + 1 === viewId ? 'selected-side-nav' : null}>
+                        <button className='side-nav-btn' data-indexnum={`btn-${index + 1}`} onClick={() => {setViewId(index + 1); handleViewChange(section)}}>{contentArr[index].sectionTitle}</button>
                     </li>
                 }): undefined}
 

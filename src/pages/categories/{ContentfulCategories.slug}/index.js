@@ -8,10 +8,10 @@ import { Link } from 'gatsby'
 
 
 const CategoryPost = (props) => {
-    console.log(props.pageContext.id)
+    console.log(props.pageContext.id, 'contxt id from CategoryPost')
     const data = props.data
     
-    console.log(data)
+    console.log(data, 'data from CategoryPost')
     return (
         <div id="App"> 
             <div id="top-section-container">
@@ -20,34 +20,39 @@ const CategoryPost = (props) => {
             <div className='cata-content-container'>
             {data.contentfulCategories.blogpost ? data.contentfulCategories.blogpost.map((node) => {
                 return (
-                    <Link className="post-links" to={`/${node.slug}`} key={node.contentful_id}>
-                    <div className="bot-nav-cards">
+                    
+                    <div className="bot-nav-cards" key={node.contentful_id}>
+                    
                     <div className="card-img-container">
+                    <Link className="post-links" to={`/${node.slug}`} >
                     {node.thumbnail && <GatsbyImage image={node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
+                    </Link>
                     </div>
+                    
                     <ul className="tag-list">
                         <li className='dark-b'>{node.catRef.categoryName}</li>
                     </ul>
+                    <Link className="post-links" to={`/${node.slug}`} key={node.contentful_id}>
                     <h2 className="card-post-title">
                         {node.postTitle}
                     </h2>
                     <p className="card-excerpt">
                         {node.excerpt}
                     </p>
+                    </Link>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
-                    {node.authorRef ? <GatsbyImage image={node.authorRef.gatsbyImageData} alt={node.author ? node.author[0] : undefined} />: <StaticImage src="../../../images/default-portrait.jpg" alt={node.author ? node.author[0] : 'author avatar'}></StaticImage>}
+                    {node.soleAuthor ? <GatsbyImage image={node.soleAuthor[0].avatar.gatsbyImageData} alt={node.soleAuthor ? `${node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../../../images/default-portrait.jpg" alt={node.author ? node.author[0] : 'author avatar'}></StaticImage>}
                         
                         </div>
                         <div className="card-author-name">
-                        {node.author ? node.author : undefined}
+                        {node.soleAuthor ? node.soleAuthor[0].name : undefined}
                         </div>
 
 
                     </div>
-
+                    
                 </div>
-                </Link>
                 )
                 
             }): 'No content'}
@@ -74,14 +79,17 @@ export const query = graphql`
             catRef {
                 categoryName
               }
-            authorRef {
-                gatsbyImageData
-            }
-            author
+            
+            soleAuthor {
+                avatar {
+                  gatsbyImageData
+                }
+                name
+              }
         }
         }
     }
 `
-export const Head = ({data}) => <Seo title={`AFS - ${data.contentfulCategories.categoryName}`}></Seo>
+export const Head = ({data}) => <Seo title={`SkiveAi - ${data.contentfulCategories.categoryName}`} description={`SkiveAi's reviews`}></Seo>
 
 export default CategoryPost

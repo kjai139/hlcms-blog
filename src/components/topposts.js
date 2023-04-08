@@ -28,6 +28,12 @@ const TopPosts = () => {
                   contentful_id
                 }
                 author
+                soleAuthor {
+                    avatar {
+                      gatsbyImageData
+                    }
+                    name
+                  }
               }
             }
           }
@@ -38,7 +44,7 @@ const TopPosts = () => {
         return (
             data.allContentfulBlogPost.edges.slice(0, 2).map( (node) => {
                 const image = getImage(node.node.thumbnail)
-                const authorAvatar = getImage(node.node.authorRef)
+                const authorAvatar = getImage(node.node.soleAuthor[0].avatar)
                 return (
                     <div className="bot-nav-cards" key={node.node.contentful_id}>
                     <div className="card-img-container">
@@ -57,11 +63,11 @@ const TopPosts = () => {
                     </p>
                     <div className="card-author-block">
                         <div className="card-author-avatar">
-                            {node.node.authorRef ? <GatsbyImage image={authorAvatar} alt={node.node.author ? node.node.author[0] : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
+                            {node.node.soleAuthor ? <GatsbyImage image={authorAvatar} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
                         
                         </div>
                         <div className="card-author-name">
-                        {node.node.author ? node.node.author : undefined}
+                        {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
 
                     </div>

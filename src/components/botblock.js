@@ -6,7 +6,7 @@ const BotBlock = () => {
     const data = useStaticQuery(graphql`
    
     query{
-        allContentfulBlogPost(limit: 6, sort: {createdAt: DESC}) {
+        allContentfulBlogPost(skip: 2, limit: 3, sort: {createdAt: DESC}) {
             edges {
               node {
                 createdAt
@@ -22,7 +22,13 @@ const BotBlock = () => {
                   categoryName
                   contentful_id
                 }
-                author
+                
+                soleAuthor {
+                    avatar {
+                      gatsbyImageData
+                    }
+                    name
+                }
               }
             }
           }
@@ -30,7 +36,7 @@ const BotBlock = () => {
     `)
 
     const renderBottomFourPosts = () => {
-        return data.allContentfulBlogPost.edges.slice(2).map(node => 
+        return data.allContentfulBlogPost.edges.map(node => 
             <div className="bot-nav-cards" key={node.node.contentful_id}>
                     <div className="card-img-container">
                     {node.node.thumbnail && <GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
@@ -46,11 +52,11 @@ const BotBlock = () => {
                     </p>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
-                    {node.node.authorRef ? <GatsbyImage image={node.node.authorRef.gatsbyImageData} alt={node.node.author ? node.node.author[0] : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
+                    {node.node.soleAuthor ? <GatsbyImage image={node.node.soleAuthor[0].avatar.gatsbyImageData} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
                         
                         </div>
                         <div className="card-author-name">
-                        {node.node.author ? node.node.author : undefined}
+                        {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
 
 
