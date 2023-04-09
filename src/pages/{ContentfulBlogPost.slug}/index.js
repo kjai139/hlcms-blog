@@ -9,6 +9,7 @@ import SideNavBar from '../../components/sideNav'
 import { useState } from 'react'
 import { useRef } from 'react'
 import { useEffect } from 'react'
+import  Footer  from '../../components/footer'
 
 const Bold = ({ children }) => <span className="bold">{children}</span>
 const Text = ({ children }) => <p className="align-center">{children}</p>
@@ -142,7 +143,12 @@ const BlogPosts = (props) => {
 
         </div>
       </div>
+      <footer id="footer-section-container">
+      <Footer />
+
+      </footer>
       </div>
+
     )
 }
 

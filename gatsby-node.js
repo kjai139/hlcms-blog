@@ -19,35 +19,46 @@ exports.createPages = async ({ actions, graphql }) => {
 
     const reviewsResult = await graphql(`
     query {
-        contentfulCategories(categoryName: {eq: "Reviews"}) {
-            blogpost {
-              postTitle
-              soleAuthor {
-                avatar {
-                  gatsbyImageData
-                }
-                name
-              }
-              slug
-              thumbnail {
+      allContentfulBlogPost(
+        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        sort: {createdAt: DESC}
+      ) {
+        edges {
+          node {
+            slug
+            postTitle
+            soleAuthor {
+              avatar {
                 gatsbyImageData
-                description
               }
+              name
             }
+            contentful_id
           }
+        }
+      }
     }
     `)
     console.log(archiveResult.data)
+    console.log(reviewsResult.data)
     const blogPosts = archiveResult.data.allContentfulBlogPost.nodes
-    const reviewPosts = reviewsResult.data.contentfulCategories.blogpost
+    const reviewPosts = reviewsResult.data.allContentfulBlogPost.edges
     
     paginate({
         createPage,
         items: blogPosts,
-        itemsPerPage: 10,
+        itemsPerPage: 5,
         pathPrefix: '/archive',
         component: path.resolve('./src/components/templates/blogpostlist.js')
       });
+
+    paginate({
+      createPage,
+      items: reviewPosts,
+      itemsPerPage: 3,
+      pathPrefix: '/categories/reviews/page',
+      component: path.resolve('./src/components/templates/reviewpostlist.js')
+    })
 
    
 }

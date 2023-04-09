@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 
 const TopPosts = () => {
 
@@ -15,9 +16,6 @@ const TopPosts = () => {
                 contentful_id
                 slug
                 postTitle
-                authorRef {
-                    gatsbyImageData
-                  }
                 thumbnail {
                   gatsbyImageData
                   title
@@ -27,7 +25,7 @@ const TopPosts = () => {
                   categoryName
                   contentful_id
                 }
-                author
+                
                 soleAuthor {
                     avatar {
                       gatsbyImageData
@@ -48,13 +46,14 @@ const TopPosts = () => {
                 return (
                     <div className="bot-nav-cards" key={node.node.contentful_id}>
                     <div className="card-img-container">
-                    {node.node.thumbnail && <GatsbyImage image={image} alt={node.node.thumbnail && node.node.thumbnail.title} /> }
+                    {node.node.thumbnail && <Link to={`${node.node.slug}`}><GatsbyImage image={image} alt={node.node.thumbnail && node.node.thumbnail.title} /></Link> }
                        
     
                     </div>
                     <ul className="tag-list">
                         <li>{node.node.catRef.categoryName}</li>
                     </ul>
+                    <Link to={`${node.node.slug}`}>
                     <h2 className="card-post-title">
                         {node.node.postTitle}
                     </h2>
@@ -62,6 +61,7 @@ const TopPosts = () => {
                         {node.node.excerpt}
                     </p>
                     <div className="card-author-block">
+                        
                         <div className="card-author-avatar">
                             {node.node.soleAuthor ? <GatsbyImage image={authorAvatar} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
                         
@@ -69,8 +69,10 @@ const TopPosts = () => {
                         <div className="card-author-name">
                         {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
+                        
 
                     </div>
+                    </Link>
 
                 </div>
                 )

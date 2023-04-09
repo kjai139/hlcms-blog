@@ -32,7 +32,7 @@ const SideNavBar = ({contentArr}) => {
                 setViewId(viewId)
             }
         }, {
-            rootMargin: "-50% 0% -50% 0%"
+            rootMargin: "20% 20% 20% 20%"
         })
 
         ids.forEach((id) => {
@@ -50,8 +50,18 @@ const SideNavBar = ({contentArr}) => {
     const handleViewChange = (id) => {
         const section = document.getElementById(id)
         console.log(id, 'id targeted')
+        console.log(viewId, 'viewid')
         section.scrollIntoView({behavior: "smooth"})
+        let viewIdfromSect = Number(id.split('-')[1])
+        setTimeout(() => {
+            setViewId(viewIdfromSect)
+            
+        }, 500);
+        
+       
     }
+
+   
 
 
     return (
@@ -66,7 +76,7 @@ const SideNavBar = ({contentArr}) => {
                     
 
                     return <li key={section} className={index + 1 === viewId ? 'selected-side-nav' : null}>
-                        <button className='side-nav-btn' data-indexnum={`btn-${index + 1}`} onClick={() => {setViewId(index + 1); handleViewChange(section)}}>{contentArr[index].sectionTitle}</button>
+                        <button className='side-nav-btn' data-indexnum={`btn-${index + 1}`} onClick={() => { handleViewChange(section)}}>{contentArr[index].sectionTitle}</button>
                     </li>
                 }): undefined}
 

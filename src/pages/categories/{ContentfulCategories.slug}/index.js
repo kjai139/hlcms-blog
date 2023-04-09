@@ -3,50 +3,51 @@ import * as React from 'react'
 import Seo from '../../../components/seo'
 import Topblock from '../../../components/topblock'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-
+import  Footer  from '../../../components/footer'
 import { Link } from 'gatsby'
 
 
 const CategoryPost = (props) => {
     console.log(props.pageContext.id, 'contxt id from CategoryPost')
-    const data = props.data
+    const data = props.data.allContentfulBlogPost.edges
     
-    console.log(data, 'data from CategoryPost')
+    console.log(data[0].node, 'data from CategoryPost')
     return (
         <div id="App"> 
             <div id="top-section-container">
-                <Topblock inCat={true} curPage={data.contentfulCategories.slug} headerTitle={data.contentfulCategories.categoryName}></Topblock>
+                <Topblock inCat={true} curPage={data[0].node.catRef.slug} headerTitle={data[0].node.catRef.categoryName}></Topblock>
             </div>
             <div className='cata-content-container'>
-            {data.contentfulCategories.blogpost ? data.contentfulCategories.blogpost.map((node) => {
+            {data ? data.map((node) => {
+                // console.log(node.node, 'from node map')
                 return (
                     
-                    <div className="bot-nav-cards" key={node.contentful_id}>
+                    <div className="bot-nav-cards" key={node.node.contentful_id}>
                     
                     <div className="card-img-container">
-                    <Link className="post-links" to={`/${node.slug}`} >
-                    {node.thumbnail && <GatsbyImage image={node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
+                    <Link className="post-links" to={`/${node.node.slug}`} >
+                    {node.node.thumbnail && <GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
                     </Link>
                     </div>
                     
                     <ul className="tag-list">
-                        <li className='dark-b'>{node.catRef.categoryName}</li>
+                        <li className='dark-b'>{node.node.catRef.categoryName}</li>
                     </ul>
-                    <Link className="post-links" to={`/${node.slug}`} key={node.contentful_id}>
+                    <Link className="post-links" to={`/${node.node.slug}`}>
                     <h2 className="card-post-title">
-                        {node.postTitle}
+                        {node.node.postTitle}
                     </h2>
                     <p className="card-excerpt">
-                        {node.excerpt}
+                        {node.node.excerpt}
                     </p>
                     </Link>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
-                    {node.soleAuthor ? <GatsbyImage image={node.soleAuthor[0].avatar.gatsbyImageData} alt={node.soleAuthor ? `${node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../../../images/default-portrait.jpg" alt={node.author ? node.author[0] : 'author avatar'}></StaticImage>}
+                    {node.node.soleAuthor ? <GatsbyImage image={node.node.soleAuthor[0].avatar.gatsbyImageData} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: null}
                         
                         </div>
                         <div className="card-author-name">
-                        {node.soleAuthor ? node.soleAuthor[0].name : undefined}
+                        {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
 
 
@@ -57,39 +58,62 @@ const CategoryPost = (props) => {
                 
             }): 'No content'}
             </div>
+            <div className='view-more-cont'>
+                <Link to='./page'>
+                <button className='view-more-btn'>VIEW MORE POSTS</button>
+                </Link>
+            </div>
+            <footer id="footer-section-container">
+            <Footer />
+
+            </footer>
         </div>
     )
 }
 
-// the id here uses the gatsby generated id
+
+
+
+// the id here uses the gatsby generated id in pageContext, the filesystem uses its filename as the query and for the acutal page there can be a seperate query for the content
+
+
 export const query = graphql`
     query($id: String) {
-        contentfulCategories(id: {eq: $id}) {
-        slug
-        categoryName
-    
-        blogpost {
-            postTitle
-            slug  
-            contentful_id
-            thumbnail {
-                gatsbyImageData
-            }
-            excerpt
-            catRef {
-                categoryName
-              }
-            
-            soleAuthor {
-                avatar {
-                  gatsbyImageData
+        allContentfulBlogPost(
+            sort: {createdAt: DESC}
+            filter: {catRef: {id: {eq: $id}}}
+            limit: 6
+        ) {
+            edges {
+            node {
+                postTitle
+                catRef {
+                    categoryName
+                    slug
                 }
-                name
-              }
-        }
+                slug
+                excerpt
+                soleAuthor {
+                    avatar {
+                      gatsbyImageData
+                    }
+                    name
+                  }
+                thumbnail {
+                    gatsbyImageData
+                  }
+                contentful_id
+            }
+            }
         }
     }
 `
-export const Head = ({data}) => <Seo title={`SkiveAi - ${data.contentfulCategories.categoryName}`} description={`SkiveAi's reviews`}></Seo>
+
+
+export const Head = ({data}) => <Seo title={`SkiveAi - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`SkiveAi's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
+
+
+
+
 
 export default CategoryPost
