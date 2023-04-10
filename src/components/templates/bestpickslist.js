@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import * as React from 'react'
 import Topblock from '../topblock';
 import Seo from '../seo';
@@ -8,16 +8,18 @@ import Footer from '../footer';
 
 
 
-const BlogPostList = ({ data, pageContext }) => {
+
+const BestPickPostList = ({ data, pageContext }) => {
     const { humanPageNumber, pageNumber, numberOfPages } = pageContext;
     const blogPosts = data.allContentfulBlogPost.edges;
 
-    console.log(data.allContentfulBlogPost, 'from blogpostlist')
+    console.log(data.allContentfulBlogPost, 'from bbpostlist')
+    console.log(pageContext)
 
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock headerTitle='Post Archive' curPage="home" />
+        <Topblock headerTitle='Best Picks Archive' inArc={true}/>
         </div>
     <div className='archive-content'>
       {/* Render list of blog posts */}
@@ -46,12 +48,18 @@ const BlogPostList = ({ data, pageContext }) => {
       {/* Render pagination links */}
       <nav className='page-nav'>
         <ul className='page-nav-list'>
-        {Array(numberOfPages).fill().map( (_, i) => {
+            {Array(numberOfPages).fill().map( (_, i) => {
                 return <li key={`pagination-number${i + 1}`} className={ i === pageNumber ? 'page-nav-entries selected' : 'page-nav-entries'}>
                    {i === pageNumber ? `${i + 1}` : <Link to={ i === 0 ? `../` : `./${i + 1}`}>{i + 1}</Link>}
                     
                 </li>
             })}
+          {/* {Array.from({ length: numberOfPages }, (_, i) => (
+            <li key={`pagination-number${i + 1}`}>
+                {pageNumber === i ? }
+              <Link to={`/${i === 0 ? '' : i + 1}`}>{i + 1}</Link>
+            </li>
+          ))} */}
         </ul>
       </nav>
     </div>
@@ -64,28 +72,27 @@ const BlogPostList = ({ data, pageContext }) => {
   );
 };
 
+
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}) {
-        edges {
-          node {
-                slug
-                createdAt(formatString: "MMMM DD, YYYY")
-                postTitle
-                soleAuthor {
-                  avatar {
-                    gatsbyImageData
-                  }
-                  name
-                }
+    query($skip: Int!, $limit: Int!) {
+        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Best Picks"}}}) {
+            edges {
+                node {
+                    slug
+                    createdAt(formatString: "MMMM DD, YYYY")
+                    postTitle
+                    soleAuthor {
+                    avatar {
+                        gatsbyImageData
+                    }
+                    name
+                    }
+            }
         }
-      }
+        }
     }
-  }
-`;
+`
 
-export const Head = () => <Seo title='SkiveAi - Post Archive' description='Blogposts archive' />
+export const Head = () => <Seo title='Deskego - Best Picks Archive' description='archive of Best Picks blog posts' />
 
-export default BlogPostList
-
-
+export default BestPickPostList

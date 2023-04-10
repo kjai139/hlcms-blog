@@ -17,11 +17,12 @@ const CategoryPost = (props) => {
             <div id="top-section-container">
                 <Topblock inCat={true} curPage={data[0].node.catRef.slug} headerTitle={data[0].node.catRef.categoryName}></Topblock>
             </div>
+            <div className='bot-section-container'>
             <div className='cata-content-container'>
             {data ? data.map((node) => {
                 // console.log(node.node, 'from node map')
                 return (
-                    
+                   
                     <div className="bot-nav-cards" key={node.node.contentful_id}>
                     
                     <div className="card-img-container">
@@ -54,9 +55,11 @@ const CategoryPost = (props) => {
                     </div>
                     
                 </div>
+               
                 )
                 
             }): 'No content'}
+            </div>
             </div>
             <div className='view-more-cont'>
                 <Link to='./page'>
@@ -68,6 +71,7 @@ const CategoryPost = (props) => {
 
             </footer>
         </div>
+        
     )
 }
 
@@ -110,7 +114,7 @@ export const query = graphql`
 `
 
 
-export const Head = ({data}) => <Seo title={`SkiveAi - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`SkiveAi's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
+export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`SkiveAi's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
 
 
 

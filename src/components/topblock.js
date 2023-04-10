@@ -32,6 +32,9 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
                     <div><Link to="/">Deskego</Link></div>
                 </div>
                 <nav id="top-nav">
+                    
+                    {/* <input type="checkbox" id="menu-toggle"></input>
+                    <label htmlFor='menu-toggle' className="menu-icon">&#9776;</label> */}
                     <ul className="navMenu">
                         <li className={curPage === 'reviews' ? 'selected' : undefined}>
                             {inArc ? <Link to='/categories/reviews' replace={true}>Reviews </Link> : <Link to={inCat ? '../reviews' : '../categories/reviews'}>

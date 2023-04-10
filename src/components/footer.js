@@ -8,7 +8,7 @@ const Footer = () => {
             <div className='footer-sect'>
                 <h4>Search the site</h4>
                 <Searchbar />
-                <span>© 2023 SkiveAi</span>
+                
             </div>
             <div className='footer-sect'>
                 <h4>Content Categories</h4>
@@ -21,6 +21,7 @@ const Footer = () => {
             </div>
             <div className='footer-sect'>
                 <h4>Contact Us</h4>
+                <span>© 2023 Deskego.com</span>
             </div>
         </div>
     )

@@ -55,13 +55,13 @@ const BlogPosts = (props) => {
           
 
           node.content.forEach(element => {
-            console.log(element.nodeType)
+            console.log(element, 'ele from parser')
             if (element.nodeType === 'text') {
               
               textContent += element.value
             }
           });
-          console.log(node)
+          console.log(textContent, 'txtcontent from paser')
           let cleanedString = textContent.replace(/\n/g, '')
           console.log(cleanedString)
           let obj = {

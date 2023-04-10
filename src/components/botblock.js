@@ -9,7 +9,7 @@ const BotBlock = () => {
         allContentfulBlogPost(skip: 2, limit: 3, sort: {createdAt: DESC}) {
             edges {
               node {
-                createdAt
+                createdAt(formatString: "MMMM DD, YYYY")
                 excerpt
                 contentful_id
                 slug
@@ -58,7 +58,7 @@ const BotBlock = () => {
                         <div className="card-author-name">
                         {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
-
+                        <span className='card-post-date'>{node.node.createdAt}</span>
 
                     </div>
 

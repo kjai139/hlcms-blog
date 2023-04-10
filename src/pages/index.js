@@ -28,6 +28,6 @@ const HomePage = () => {
 
 
 
-export const Head = () => <Seo />
+export const Head = () => <Seo title={'Deskego - Home'} description={'Deskego, the most updated reviews on computer related gear'} />
 
 export default HomePage

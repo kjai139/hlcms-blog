@@ -37,7 +37,7 @@ const ReviewPostList = ({ data, pageContext }) => {
                     </div>
                     {blogPost.node.soleAuthor[0].name}
                   </div>
-                  <span>{blogPost.node.createdAt}</span>
+                  <span className='card-post-date'>{blogPost.node.createdAt}</span>
                 </div>
               </div>
               </Link>

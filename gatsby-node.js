@@ -39,10 +39,58 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
     `)
-    console.log(archiveResult.data)
-    console.log(reviewsResult.data)
+    const bestPickResult = await graphql(`
+    query {
+      allContentfulBlogPost(
+        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        sort: {createdAt: DESC}
+      ) {
+        edges {
+          node {
+            slug
+            postTitle
+            soleAuthor {
+              avatar {
+                gatsbyImageData
+              }
+              name
+            }
+            contentful_id
+          }
+        }
+      }
+    }
+    `)
+
+    const creatorHlightsResult = await graphql(`
+    query {
+      allContentfulBlogPost(
+        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        sort: {createdAt: DESC}
+      ) {
+        edges {
+          node {
+            slug
+            postTitle
+            soleAuthor {
+              avatar {
+                gatsbyImageData
+              }
+              name
+            }
+            contentful_id
+          }
+        }
+      }
+    }
+    `)
+
+    // console.log(archiveResult.data)
+    // console.log(reviewsResult.data)
     const blogPosts = archiveResult.data.allContentfulBlogPost.nodes
     const reviewPosts = reviewsResult.data.allContentfulBlogPost.edges
+    const bestPickPosts = bestPickResult.data.allContentfulBlogPost.edges
+    const creatorHlightPosts = creatorHlightsResult.data.allContentfulBlogPost.edges
     
     paginate({
         createPage,
@@ -58,6 +106,22 @@ exports.createPages = async ({ actions, graphql }) => {
       itemsPerPage: 3,
       pathPrefix: '/categories/reviews/page',
       component: path.resolve('./src/components/templates/reviewpostlist.js')
+    })
+
+    paginate({
+      createPage,
+      items: bestPickPosts,
+      itemsPerPage: 10,
+      pathPrefix: '/categories/best-picks/page',
+      component: path.resolve('./src/components/templates/bestpickslist.js')
+    })
+
+    paginate({
+      createPage,
+      items: creatorHlightPosts,
+      itemsPerPage: 10,
+      pathPrefix: '/categories/creator-highlights/page',
+      component: path.resolve('./src/components/templates/creatorhllist.js')
     })
 
    

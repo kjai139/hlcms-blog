@@ -11,7 +11,7 @@ const TopPosts = () => {
         allContentfulBlogPost(limit: 2, sort: {createdAt: DESC}) {
             edges {
               node {
-                createdAt
+                createdAt(formatString: "MMMM DD, YYYY")
                 excerpt
                 contentful_id
                 slug
@@ -54,10 +54,10 @@ const TopPosts = () => {
                         <li>{node.node.catRef.categoryName}</li>
                     </ul>
                     <Link to={`${node.node.slug}`}>
-                    <h2 className="card-post-title">
+                    <h2 className="card-post-title dark-b-txt">
                         {node.node.postTitle}
                     </h2>
-                    <p className="card-excerpt">
+                    <p className="card-excerpt dark-b-txt">
                         {node.node.excerpt}
                     </p>
                     <div className="card-author-block">
@@ -69,7 +69,7 @@ const TopPosts = () => {
                         <div className="card-author-name">
                         {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
                         </div>
-                        
+                        <span className='card-post-date'>{node.node.createdAt}</span>
 
                     </div>
                     </Link>
