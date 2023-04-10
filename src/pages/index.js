@@ -5,6 +5,7 @@ import "../components/styles/styles.css"
 import BotBlock from "../components/botblock"
 import TopPosts from "../components/topposts"
 import Footer from "../components/footer"
+import { Link } from "gatsby"
 
 const HomePage = () => {
 
@@ -13,10 +14,15 @@ const HomePage = () => {
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock curPage="home" headerTxt="make cash money" />
+        <Topblock curPage="home"/>
         <TopPosts />
       </div>
     <BotBlock />
+    <div className='view-more-cont'>
+                <Link to='/archive'>
+                <button className='view-more-btn'>VIEW MORE POSTS</button>
+                </Link>
+            </div>
     <footer id="footer-section-container">
       <Footer />
 

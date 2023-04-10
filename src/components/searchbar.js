@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 
 
-const Searchbar = () => {
+const Searchbar = ({isBottom = false}) => {
     const [query, setQuery] = useState('')
     const [results, setResults] = useState([])
 
@@ -18,8 +18,8 @@ const Searchbar = () => {
 
     
 
-    console.log(window.__FLEXSEARCH__.en.index, 'search index')
-    console.log(window.__FLEXSEARCH__.en.store, 'the searchbar store')
+    // console.log(window.__FLEXSEARCH__.en.index, 'search index')
+    // console.log(window.__FLEXSEARCH__.en.store, 'the searchbar store')
 
     const getSearchResults = (query) => {
         
@@ -40,11 +40,11 @@ const Searchbar = () => {
 
             let nodes = store.filter(node => (results.includes(node.id) ? node : null))
             .map(node => node.node)
-            console.log(nodes)
+            // console.log(nodes)
             setResults(nodes)
             setIsResultOut(true)
-            console.log(query)
-            console.log(results)
+            // console.log(query)
+            // console.log(results)
             
         }
     }
@@ -58,7 +58,7 @@ const Searchbar = () => {
         setResults([])
         const value = e.target.value
         setQuery(value)
-        console.log('query set to', query, e.target.value)
+        // console.log('query set to', query, e.target.value)
         getSearchResults(value)
     }
     
@@ -101,7 +101,7 @@ const Searchbar = () => {
         </button>
         </form>
         <div ref={overlayRef} className={isResultOut ? 'overlay' : 'overlay hidden'} aria-disabled={isResultOut ? false : true} onClick={toggleMenuOpen} tabIndex="0" role="button" aria-label='Press Escape to close search menu'></div>
-        <div className='search-result-div'>
+        <div className={isBottom === true? 'search-result-div from-bot' : 'search-result-div'}>
                 
                 <ul className='searchResult-list'>
                 {results.length > 0 && isResultOut ? results.map((node) => {

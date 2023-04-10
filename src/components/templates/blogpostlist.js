@@ -12,7 +12,7 @@ const BlogPostList = ({ data, pageContext }) => {
     const { humanPageNumber, pageNumber, numberOfPages } = pageContext;
     const blogPosts = data.allContentfulBlogPost.edges;
 
-    console.log(data.allContentfulBlogPost, 'from blogpostlist')
+    // console.log(data.allContentfulBlogPost, 'from blogpostlist')
 
   return (
     <div id="App"> 

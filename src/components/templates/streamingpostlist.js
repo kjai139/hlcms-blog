@@ -9,12 +9,12 @@ import Footer from '../footer';
 
 
 
-const CreatorHlPostList = ({ data, pageContext }) => {
+const StreamingPostList = ({ data, pageContext }) => {
     const { humanPageNumber, pageNumber, numberOfPages } = pageContext;
     const blogPosts = data.allContentfulBlogPost.edges;
 
-    console.log(data.allContentfulBlogPost, 'from creatorhlpostlist')
-    console.log(pageContext)
+    // console.log(data.allContentfulBlogPost, 'from reviewpostlist')
+    // console.log(pageContext)
 
   return (
     <div id="App"> 
@@ -75,7 +75,7 @@ const CreatorHlPostList = ({ data, pageContext }) => {
 
 export const query = graphql`
     query($skip: Int!, $limit: Int!) {
-        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Creator Highlights"}}}) {
+        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Streaming"}}}) {
             edges {
                 node {
                     slug
@@ -93,6 +93,6 @@ export const query = graphql`
     }
 `
 
-export const Head = () => <Seo title='Deskego - Creator Highlights Archive' description='archive of creator highlights blog posts' />
+export const Head = () => <Seo title='Deskego - Streaming post archive' description='blogposts related to streaming' />
 
-export default CreatorHlPostList
+export default StreamingPostList

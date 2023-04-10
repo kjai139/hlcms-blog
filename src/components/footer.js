@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Searchbar from './searchbar'
+import { Link } from 'gatsby'
 
 
 const Footer = () => {
@@ -7,15 +8,15 @@ const Footer = () => {
         <div className='footer-section-container'>
             <div className='footer-sect'>
                 <h4>Search the site</h4>
-                <Searchbar />
+                <Searchbar isBottom={true} />
                 
             </div>
             <div className='footer-sect'>
                 <h4>Content Categories</h4>
                 <ul className='footer-list'>
-                    <li>Reviews</li>
-                    <li>Best Picks</li>
-                    <li>Creator Highlights</li>
+                    <li><Link to='/categories/home-office'>Home Office</Link></li>
+                    <li><Link to='/categories/gaming'>Gaming</Link></li>
+                    <li><Link to='/categories/streaming'>Streaming</Link></li>
 
                 </ul>
             </div>

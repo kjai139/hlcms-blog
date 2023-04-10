@@ -9,11 +9,11 @@ const ReviewsPage = ({data}) => {
     return (
         <div id="App"> 
         <div id="top-section-container">
-        <Topblock headerTitle="Categories" headerTxt="Take a look at what we have" curPage="categories" inCat={true}></Topblock>
+        <Topblock headerTitle="Categories" headerTxt="Take a look at our categories" curPage="categories" inCat={true}></Topblock>
         </div>
 
         <div className='reviews-content-container'>
-            {console.log(data)}
+           
 
         </div>
 

@@ -2,16 +2,16 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import Seo from '../../../components/seo'
 import Topblock from '../../../components/topblock'
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import  Footer  from '../../../components/footer'
 import { Link } from 'gatsby'
 
 
 const CategoryPost = (props) => {
-    console.log(props.pageContext.id, 'contxt id from CategoryPost')
+    // console.log(props.pageContext.id, 'contxt id from CategoryPost')
     const data = props.data.allContentfulBlogPost.edges
     
-    console.log(data[0].node, 'data from CategoryPost')
+    // console.log(data[0].node, 'data from CategoryPost')
     return (
         <div id="App"> 
             <div id="top-section-container">
@@ -114,7 +114,7 @@ export const query = graphql`
 `
 
 
-export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`SkiveAi's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
+export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`Deskego.com's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
 
 
 

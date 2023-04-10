@@ -17,10 +17,10 @@ exports.createPages = async ({ actions, graphql }) => {
     }
     `)
 
-    const reviewsResult = await graphql(`
+    const officeResult = await graphql(`
     query {
       allContentfulBlogPost(
-        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        filter: {catRef: {categoryName: {eq: "Home Office"}}}
         sort: {createdAt: DESC}
       ) {
         edges {
@@ -39,10 +39,10 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
     `)
-    const bestPickResult = await graphql(`
+    const gamingResult = await graphql(`
     query {
       allContentfulBlogPost(
-        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        filter: {catRef: {categoryName: {eq: "Gaming"}}}
         sort: {createdAt: DESC}
       ) {
         edges {
@@ -62,10 +62,10 @@ exports.createPages = async ({ actions, graphql }) => {
     }
     `)
 
-    const creatorHlightsResult = await graphql(`
+    const streamingResult = await graphql(`
     query {
       allContentfulBlogPost(
-        filter: {catRef: {categoryName: {eq: "Reviews"}}}
+        filter: {catRef: {categoryName: {eq: "Streaming"}}}
         sort: {createdAt: DESC}
       ) {
         edges {
@@ -88,9 +88,9 @@ exports.createPages = async ({ actions, graphql }) => {
     // console.log(archiveResult.data)
     // console.log(reviewsResult.data)
     const blogPosts = archiveResult.data.allContentfulBlogPost.nodes
-    const reviewPosts = reviewsResult.data.allContentfulBlogPost.edges
-    const bestPickPosts = bestPickResult.data.allContentfulBlogPost.edges
-    const creatorHlightPosts = creatorHlightsResult.data.allContentfulBlogPost.edges
+    const officePosts = officeResult.data.allContentfulBlogPost.edges
+    const gamingPosts = gamingResult.data.allContentfulBlogPost.edges
+    const streamingPosts = streamingResult.data.allContentfulBlogPost.edges
     
     paginate({
         createPage,
@@ -102,26 +102,26 @@ exports.createPages = async ({ actions, graphql }) => {
 
     paginate({
       createPage,
-      items: reviewPosts,
-      itemsPerPage: 3,
-      pathPrefix: '/categories/reviews/page',
-      component: path.resolve('./src/components/templates/reviewpostlist.js')
+      items: officePosts,
+      itemsPerPage: 10,
+      pathPrefix: '/categories/home-office/page',
+      component: path.resolve('./src/components/templates/officepostlist.js')
     })
 
     paginate({
       createPage,
-      items: bestPickPosts,
+      items: gamingPosts,
       itemsPerPage: 10,
-      pathPrefix: '/categories/best-picks/page',
-      component: path.resolve('./src/components/templates/bestpickslist.js')
+      pathPrefix: '/categories/gaming/page',
+      component: path.resolve('./src/components/templates/gamingpostlist.js')
     })
 
     paginate({
       createPage,
-      items: creatorHlightPosts,
+      items: streamingPosts,
       itemsPerPage: 10,
-      pathPrefix: '/categories/creator-highlights/page',
-      component: path.resolve('./src/components/templates/creatorhllist.js')
+      pathPrefix: '/categories/streaming/page',
+      component: path.resolve('./src/components/templates/streamingpostlist.js')
     })
 
    

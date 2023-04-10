@@ -10,25 +10,25 @@ const SideNavBar = ({contentArr}) => {
     const [viewId, setViewId] = useState()
 
     useEffect( () => {
-        console.log(contentArr, 'contentArr')
+        // console.log(contentArr, 'contentArr')
         
        
         const ids = Array.from(contentArr).map((section) => 
             section.id
         )
 
-        console.log(ids)
+        // console.log(ids)
         setSectionIds(ids)
 
         const observer = new IntersectionObserver((entries) => {
             const visibleEntry = entries.find((entry) => entry.isIntersecting)
 
             if (visibleEntry) {
-                console.log(visibleEntry, 'is being observed')
-                console.log(visibleEntry.target.id, 'target id obs')
+                // console.log(visibleEntry, 'is being observed')
+                // console.log(visibleEntry.target.id, 'target id obs')
                 setActiveSectionId(visibleEntry.target.id)
                 let viewId = Number(visibleEntry.target.id.split('-')[1])
-                console.log(viewId)
+                // console.log(viewId)
                 setViewId(viewId)
             }
         }, {
@@ -49,8 +49,8 @@ const SideNavBar = ({contentArr}) => {
 
     const handleViewChange = (id) => {
         const section = document.getElementById(id)
-        console.log(id, 'id targeted')
-        console.log(viewId, 'viewid')
+        // console.log(id, 'id targeted')
+        // console.log(viewId, 'viewid')
         section.scrollIntoView({behavior: "smooth"})
         let viewIdfromSect = Number(id.split('-')[1])
         setTimeout(() => {
@@ -71,7 +71,7 @@ const SideNavBar = ({contentArr}) => {
             <ul className='content-side-nav'>
                 {sectionIds.length > 0 ? sectionIds.map((section, index) => {
                     if (contentArr[index]) {
-                        console.log(contentArr[index].sectionTitle, 'sectionTitle')
+                        // console.log(contentArr[index].sectionTitle, 'sectionTitle')
                     }
                     
 

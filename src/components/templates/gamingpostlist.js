@@ -9,17 +9,17 @@ import Footer from '../footer';
 
 
 
-const BestPickPostList = ({ data, pageContext }) => {
+const GamingPostList = ({ data, pageContext }) => {
     const { humanPageNumber, pageNumber, numberOfPages } = pageContext;
     const blogPosts = data.allContentfulBlogPost.edges;
 
-    console.log(data.allContentfulBlogPost, 'from bbpostlist')
-    console.log(pageContext)
+    // console.log(data.allContentfulBlogPost, 'from creatorhlpostlist')
+    // console.log(pageContext)
 
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock headerTitle='Best Picks Archive' inArc={true}/>
+        <Topblock headerTitle='Reviews Archive' inArc={true}/>
         </div>
     <div className='archive-content'>
       {/* Render list of blog posts */}
@@ -75,7 +75,7 @@ const BestPickPostList = ({ data, pageContext }) => {
 
 export const query = graphql`
     query($skip: Int!, $limit: Int!) {
-        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Best Picks"}}}) {
+        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Gaming"}}}) {
             edges {
                 node {
                     slug
@@ -93,6 +93,6 @@ export const query = graphql`
     }
 `
 
-export const Head = () => <Seo title='Deskego - Best Picks Archive' description='archive of Best Picks blog posts' />
+export const Head = () => <Seo title='Deskego - Gaming posts archive' description='archive of gaming related blog posts' />
 
-export default BestPickPostList
+export default GamingPostList

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 const BotBlock = () => {
     const data = useStaticQuery(graphql`
@@ -21,6 +21,7 @@ const BotBlock = () => {
                 catRef {
                   categoryName
                   contentful_id
+                  slug
                 }
                 
                 soleAuthor {
@@ -42,7 +43,7 @@ const BotBlock = () => {
                     {node.node.thumbnail && <GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
                     </div>
                     <ul className="tag-list">
-                        <li className='dark-b'>{node.node.catRef.categoryName}</li>
+                        <li className='dark-b'><Link to={`/categories/${node.node.catRef.slug}`}>{node.node.catRef.categoryName}</Link></li>
                     </ul>
                     <h2 className="card-post-title">
                         {node.node.postTitle}

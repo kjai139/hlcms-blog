@@ -24,6 +24,7 @@ const TopPosts = () => {
                 catRef {
                   categoryName
                   contentful_id
+                  slug
                 }
                 
                 soleAuthor {
@@ -51,7 +52,7 @@ const TopPosts = () => {
     
                     </div>
                     <ul className="tag-list">
-                        <li>{node.node.catRef.categoryName}</li>
+                        <li><Link to={`/categories/${node.node.catRef.slug}`}>{node.node.catRef.categoryName}</Link></li>
                     </ul>
                     <Link to={`${node.node.slug}`}>
                     <h2 className="card-post-title dark-b-txt">

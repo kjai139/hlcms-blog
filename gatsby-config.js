@@ -5,9 +5,9 @@ require('dotenv').config()
  */
 module.exports = {
   siteMetadata: {
-    title: `HLCMS Affiliate Blog`,
-    siteUrl: `https://www.yourdomain.tld`,
-    description: 'A headless CMS affiliate blog website',
+    title: `Deskego.com`,
+    siteUrl: `https://deskego.com`,
+    description: 'Blog site for the most updated tech gear recommendations',
   },
   plugins: [
     "gatsby-plugin-image",
@@ -25,6 +25,20 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/favicon.svg'
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-DM12CPJ9FV"
+        ],
       },
     },
     {

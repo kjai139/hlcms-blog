@@ -9,17 +9,17 @@ import Footer from '../footer';
 
 
 
-const ReviewPostList = ({ data, pageContext }) => {
+const OfficePostList = ({ data, pageContext }) => {
     const { humanPageNumber, pageNumber, numberOfPages } = pageContext;
     const blogPosts = data.allContentfulBlogPost.edges;
 
-    console.log(data.allContentfulBlogPost, 'from reviewpostlist')
-    console.log(pageContext)
+    // console.log(data.allContentfulBlogPost, 'from bbpostlist')
+    // console.log(pageContext)
 
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock headerTitle='Reviews Archive' inArc={true}/>
+        <Topblock headerTitle='Best Picks Archive' inArc={true}/>
         </div>
     <div className='archive-content'>
       {/* Render list of blog posts */}
@@ -75,7 +75,7 @@ const ReviewPostList = ({ data, pageContext }) => {
 
 export const query = graphql`
     query($skip: Int!, $limit: Int!) {
-        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Reviews"}}}) {
+        allContentfulBlogPost(skip: $skip, limit: $limit, sort: {createdAt: DESC}, filter: {catRef: {categoryName: {eq: "Home Office"}}}) {
             edges {
                 node {
                     slug
@@ -93,6 +93,6 @@ export const query = graphql`
     }
 `
 
-export const Head = () => <Seo title='SkiveAi - Reviews Archive' description='Reviews archive' />
+export const Head = () => <Seo title='Deskego - Home Office blog post archive' description='archive of Home Office blog posts' />
 
-export default ReviewPostList
+export default OfficePostList

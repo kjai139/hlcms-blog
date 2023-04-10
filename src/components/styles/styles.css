@@ -36,11 +36,17 @@ body {
 #App {
     display: flex;
     flex-direction: column;
+    gap:2rem;
     
 }
 
 #top-section-container {
     background-color: var(--bgColor);
+}
+
+.archive-list > li {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
 #top-nav-div {
@@ -50,6 +56,7 @@ body {
     font-weight: bold;
     font-size: 20px;
     padding: 10px;
+    align-items: center;
 }
 
 .navMenu {
@@ -78,6 +85,10 @@ body {
     margin: 0 auto;
     color: #e5e5e5;
     
+}
+
+.header-small-img {
+    max-width: 2rem;
 }
 
 .bot-content-container {
@@ -159,6 +170,9 @@ a:visited {
     max-width: 500px;
     min-height: 200px;
     aspect-ratio: 16/9;
+    border: 2px solid var(--uiGray);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .card-author-avatar {
@@ -265,6 +279,7 @@ a:visited {
 
 .blogpost-center > p {
     margin: 2rem 0rem 2rem 0rem;
+    line-height: 2em;
 }
 
 
@@ -307,6 +322,10 @@ a:visited {
 
 .search-btn-div > input, .searchbtn-div > button, .search-result-div {
     z-index: 9991;
+}
+
+.search-result-div.from-bot {
+    bottom: 2rem;
 }
 
 .overlay {
@@ -391,7 +410,7 @@ a:visited {
 }
 
 .amazon-link-btn {
-    background: linear-gradient(to bottom right, #BBE1FA, #8CA6DB, #665EBC);
+    background-color: var(--sectionDColor);
     padding: 5px 8px 5px 8px;
     border-radius: 8px;
     border: 2px solid #364D6A;
@@ -518,7 +537,7 @@ tr {
 
 .page-nav-entries {
     padding: .5rem;
-    border: 2px solid var(--bgColor);
+    
     border-radius: 8px;
 }
 
@@ -539,8 +558,18 @@ tr {
     padding: 1rem;
 }
 
-.archive-list> li:hover, .navMenu > li:hover, #site-logo:hover, #searchBtn:hover {
-    color: #ff7f50;
+#site-logo {
+    display: flex;
+}
+
+.siteLogo-container {
+    max-height: 50px;
+    max-width: 200px;
+}
+
+
+.archive-list> li:hover, .navCat:hover, #site-logo:hover, #searchBtn:hover, .footer-list > li:hover {
+    color: var(--highlighted);
     cursor: pointer;
 }
 
@@ -622,6 +651,8 @@ tr {
     list-style-type: none;
 }
 
+
+
 @media screen and (min-width:1024px) {
     #top-section-container {
         
@@ -671,6 +702,22 @@ tr {
         font-size: 0.85rem;
     }
 
+    .top-section-headers-cont {
+        padding: 0;
+    }
+    #top-nav {
+        width: 100%;
+        
+    }
+
+    .siteLogo-container {
+        width: 100%;
+        max-height: 50px;
+        max-width: 250px;
+    }
+
+    
+
     #site-logo {
         justify-content: center;
         display: flex;
@@ -719,7 +766,7 @@ tr {
         padding: 0px 30px 30px 30px;
     }
     .top-sect-header {
-        padding: 30px;
+        padding: 2rem 0rem 1rem 0rem;
         text-align: center;
     }
 
