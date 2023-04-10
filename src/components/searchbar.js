@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useRef } from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'gatsby'
 
 
 
@@ -106,8 +107,8 @@ const Searchbar = ({isBottom = false}) => {
                 <ul className='searchResult-list'>
                 {results.length > 0 && isResultOut ? results.map((node) => {
                     return (
-                        <li key={node.contentful_id}>
-                            {node.postTitle}
+                        <li className='search-results-li' key={`searchR-${node.contentful_id}`}>
+                            <Link to={`/${node.slug}`}>{node.postTitle}</Link>
                         </li>
                     )
                 }) : null}

@@ -82,7 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--bgColor);
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
     color: #e5e5e5;
     
 }
@@ -567,8 +567,13 @@ tr {
     max-width: 200px;
 }
 
+.archive-list-entry:active, .bot-nav-cards:active {
+   
+    
+}
 
-.archive-list> li:hover, .navCat:hover, #site-logo:hover, #searchBtn:hover, .footer-list > li:hover {
+
+.archive-list> li:hover, .navCat:hover, #site-logo:hover, .search-results-li:hover, #searchBtn:hover, .footer-list > li:hover {
     color: var(--highlighted);
     cursor: pointer;
 }

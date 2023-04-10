@@ -40,17 +40,19 @@ const BotBlock = () => {
         return data.allContentfulBlogPost.edges.map(node => 
             <div className="bot-nav-cards" key={node.node.contentful_id}>
                     <div className="card-img-container">
-                    {node.node.thumbnail && <GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /> }
+                    {node.node.thumbnail && <Link to={`${node.node.slug}`}><GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /></Link> }
                     </div>
                     <ul className="tag-list">
                         <li className='dark-b'><Link to={`/categories/${node.node.catRef.slug}`}>{node.node.catRef.categoryName}</Link></li>
                     </ul>
+                    <Link to={`${node.node.slug}`}>
                     <h2 className="card-post-title">
                         {node.node.postTitle}
                     </h2>
                     <p className="card-excerpt">
                         {node.node.excerpt}
                     </p>
+                    </Link>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
                     {node.node.soleAuthor ? <GatsbyImage image={node.node.soleAuthor[0].avatar.gatsbyImageData} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
