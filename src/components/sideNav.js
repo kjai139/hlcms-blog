@@ -82,7 +82,7 @@ const SideNavBar = ({contentArr}) => {
             
             
             
-        }, 500);
+        }, 1000);
 
         setScrollTimeout(newScrollTimeoutId)
         
