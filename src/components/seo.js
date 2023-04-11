@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import ogImgDefault from 'logo.png'
+import ogImgDefault from '../images/logo.png'
 
 
 const Seo = ({title, description, siteUrl, ogImg, ogTitle, ogDesc}) => {
