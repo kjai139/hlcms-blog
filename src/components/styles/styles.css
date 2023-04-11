@@ -240,6 +240,7 @@ a:visited {
 
 .card-post-date {
     margin-left: auto;
+    font-size: 0.8rem;
 }
 
 .card-excerpt:not(.dark-b-txt), .card-post-title:not(.dark-b-txt) {
