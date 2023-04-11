@@ -593,7 +593,7 @@ tr {
 .archive-list-entry {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 1rem;
     align-items: center;
     
 }
@@ -867,7 +867,9 @@ tr {
 }
 
 @media screen and (max-width: 360px) {
-    
+    .card-post-date {
+        white-space: nowrap;
+    }
 
     .post-content-img {
         margin-left: 0;
