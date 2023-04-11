@@ -510,10 +510,9 @@ tr {
     border-radius: 8px;
 }
 
-.side-nav-title {
-    font-size: 1rem;
-    padding: 10px;
-    text-align: center;
+.side-nav-btn:hover{
+    cursor: pointer;
+    background-color: var(--uiGray);
 }
 
 
@@ -525,9 +524,28 @@ tr {
     padding: 10px;
     font-size: 15px;
     color: #333333;
+    flex: 1;
 }
+
+.side-nav-title {
+    display: flex;
+    font-size: 15px;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+}
+
+
+
 .content-side-nav {
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.content-side-nav > li {
+    display: flex;
     
 }
 
@@ -582,7 +600,9 @@ tr {
     max-width: 200px;
 }
 
-
+.main-lists {
+    margin-bottom: 1rem;
+}
 
 
 .archive-list> li:hover, .navCat:hover, #site-logo:hover, .search-results-li:hover, #searchBtn:hover, .footer-list > li:hover {

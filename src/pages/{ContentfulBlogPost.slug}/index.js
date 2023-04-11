@@ -123,6 +123,9 @@ const BlogPosts = (props) => {
               </div>
           )
         },
+        [BLOCKS.LIST_ITEM] : (node, children) => {
+          return <li className='main-lists'>{children}</li>
+        },
         
       },
       
