@@ -158,6 +158,13 @@ export const query = graphql`
       contentfulBlogPost(id: {eq: $id}) {
             id
         postTitle
+        seo {
+          ogTitle
+          ogDescription
+          ogImg{
+            url
+          }
+        }
         body {
           raw
           references {
@@ -185,6 +192,6 @@ export const query = graphql`
     }
 `
 
-export const Head = ({data}) => <Seo title={data.contentfulBlogPost.postTitle} description={`${data.contentfulBlogPost.postTitle} blog post from Deskego.com`} ogDesc={`${data.contentfulBlogPost.postTitle} | Deskego.com`}></Seo>
+export const Head = ({data}) => <Seo title={data.contentfulBlogPost.postTitle} description={`${data.contentfulBlogPost.postTitle} blog post from Deskego.com`} ogDesc={data.contentfulBlogPost.seo.ogDescription} ogImg={`${data.contentfulBlogPost.seo.ogImg.url}`}></Seo>
 
 export default BlogPosts

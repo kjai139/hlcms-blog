@@ -91,6 +91,13 @@ export const query = graphql`
             edges {
             node {
                 postTitle
+                seo {
+                    ogTitle
+                    ogDescription
+                    ogImg {
+                        url
+                    }
+                }
                 catRef {
                     categoryName
                     slug
@@ -114,7 +121,7 @@ export const query = graphql`
 `
 
 
-export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`Deskego.com's ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} page`}></Seo>
+export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`The most updated blog posts on ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} | Deskego.com`}></Seo>
 
 
 
