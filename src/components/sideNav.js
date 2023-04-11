@@ -26,7 +26,7 @@ const SideNavBar = ({contentArr}) => {
 
         const observer = new IntersectionObserver((entries) => {
             const visibleEntry = entries.find((entry) => entry.isIntersecting)
-            console.log(scrollTimeout)
+            // console.log(scrollTimeout)
             if (visibleEntry && !scrollTimeout) {
                 
                 // console.log(visibleEntry.target, 'is being observed')
