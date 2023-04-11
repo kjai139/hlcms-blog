@@ -278,7 +278,7 @@ a:visited {
 .blogpost-body-container {
     display: grid;
     margin: 1rem auto 1rem auto;
-    padding-bottom: 2rem;
+    margin-bottom: 25rem;
     gap: 30px;
 }
 
@@ -294,8 +294,25 @@ a:visited {
     line-height: 2em;
 }
 
-.blogpost-center > h2, .blogpost-center > h3, .blogpost-center > h4, .blogpost-center > h1, .blogpost-center > h5, .blogpost-center > h6 {
+.blogpost-center > ul {
+    margin: 2rem;
+}
+
+.blogpost-center > h3, .blogpost-center > h4, .blogpost-center > h1, .blogpost-center > h5, .blogpost-center > h6 {
     margin-bottom: 2rem;
+}
+
+.blogpost-center > h2 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.side-nav-content-title {
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    align-items: flex-start;
+    flex: 1 1 0%;
 }
 
 
@@ -450,6 +467,7 @@ a:visited {
 
 .side-nav-index {
     color: var(--uiGrayTwo);
+    padding-right: 3px;
 }
 
 #menu-toggle {
@@ -531,8 +549,9 @@ tr {
     display: flex;
     font-size: 15px;
     align-items: flex-start;
+    flex: 1 1;
     justify-content: center;
-    flex: 1;
+    text-align: center;
 }
 
 
@@ -707,6 +726,11 @@ tr {
 
     .content-side-nav-div {
         margin-left: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    .blogpost-center {
+        padding-bottom: 4rem;
     }
 }
 

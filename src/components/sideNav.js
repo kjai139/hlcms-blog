@@ -6,9 +6,12 @@ import { useEffect, useState } from 'react'
 
 const SideNavBar = ({contentArr}) => {
     const [sectionIds, setSectionIds] = useState([])
-    const [activeSectionId, setActiveSectionId] = useState()
+    
     const [viewId, setViewId] = useState()
-    const [targetView, setTargetView] = useState()
+    
+    const [scrollTimeout, setScrollTimeout] = useState(null)
+    
+    
 
     useEffect( () => {
         // console.log(contentArr, 'contentArr')
@@ -23,12 +26,12 @@ const SideNavBar = ({contentArr}) => {
 
         const observer = new IntersectionObserver((entries) => {
             const visibleEntry = entries.find((entry) => entry.isIntersecting)
-
-            if (visibleEntry) {
-                console.log(targetView)
-                console.log(visibleEntry.target, 'is being observed')
+            console.log(scrollTimeout)
+            if (visibleEntry && !scrollTimeout) {
+                
+                // console.log(visibleEntry.target, 'is being observed')
                 // console.log(visibleEntry.target.id, 'target id obs')
-                setActiveSectionId(visibleEntry.target.id)
+                
                 let viewId = Number(visibleEntry.target.id.split('-')[1])
                 // console.log(viewId)
                 
@@ -53,22 +56,35 @@ const SideNavBar = ({contentArr}) => {
 
         return () => {
             observer.disconnect()
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout)
+            }
         }
-    }, [])
+    }, [scrollTimeout, contentArr])
 
     const handleViewChange = (id) => {
         const section = document.getElementById(id)
         let viewIdfromSect = Number(id.split('-')[1])
-        setTargetView(viewIdfromSect)
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout)
+        }
+        
         // console.log(id, 'id targeted')
         // console.log(viewId, 'viewid')
+        
+        
         section.scrollIntoView({behavior: "smooth"})
         
-        // setTimeout(() => {
-        //     setViewId(viewIdfromSect)
-        //     setTargetView('')
+        const newScrollTimeoutId = setTimeout(() => {
             
-        // }, 500);
+            setViewId(viewIdfromSect)
+            setScrollTimeout(null)
+            
+            
+            
+        }, 500);
+
+        setScrollTimeout(newScrollTimeoutId)
         
        
     }
@@ -79,7 +95,7 @@ const SideNavBar = ({contentArr}) => {
     return (
         <div className='content-side-nav-div'>
             <div className='side-nav-wrap'>
-            <h6 className='side-nav-title'>Content</h6>
+            <h6 className='side-nav-content-title'>Content</h6>
             <ul className='content-side-nav'>
                 {sectionIds.length > 0 ? sectionIds.map((section, index) => {
                     if (contentArr[index]) {
