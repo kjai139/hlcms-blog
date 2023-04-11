@@ -278,9 +278,14 @@ a:visited {
 }
 
 .blogpost-center > p {
-    margin: 2rem 0rem 2rem 0rem;
+    margin: 0rem 0rem 2rem 0rem;
     line-height: 2em;
 }
+
+.blogpost-center > h2, .blogpost-center > h3, .blogpost-center > h4, .blogpost-center > h1, .blogpost-center > h5, .blogpost-center > h6 {
+    margin-bottom: 2rem;
+}
+
 
 
 .blogpost-body-container > :nth-child(1) {
