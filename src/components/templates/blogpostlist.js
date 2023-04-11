@@ -84,7 +84,7 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => <Seo title='SkiveAi - Post Archive' description='Blogposts archive' />
+export const Head = () => <Seo title='Deskego - Post Archive' description='An archive of all blog posts' />
 
 export default BlogPostList
 
