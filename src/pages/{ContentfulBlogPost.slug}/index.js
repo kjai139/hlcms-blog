@@ -185,6 +185,6 @@ export const query = graphql`
     }
 `
 
-export const Head = ({data}) => <Seo title={data.contentfulBlogPost.postTitle} description={`${data.contentfulBlogPost.postTitle} blog post from Deskego.com`}></Seo>
+export const Head = ({data}) => <Seo title={data.contentfulBlogPost.postTitle} description={`${data.contentfulBlogPost.postTitle} blog post from Deskego.com`} ogDesc={`${data.contentfulBlogPost.postTitle} | Deskego.com`}></Seo>
 
 export default BlogPosts
