@@ -23,6 +23,13 @@
     
 }
 
+h2 {
+    font-size: 1.75rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+
 body {
     font-family: var(--txtFont);
 }
@@ -636,7 +643,7 @@ tr {
 }
 
 .footer-sect {
-    padding: 4rem;
+    padding: 1rem 2rem 1rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -710,7 +717,7 @@ tr {
 
 @media screen and (max-width:768px) {
     html {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     .top-section-headers-cont {
@@ -763,6 +770,7 @@ tr {
 
     .top-nav-container {
         gap: 1rem;
+        padding: 1rem 2rem 1rem 2rem;
     }
 
     .navMenu {
@@ -824,14 +832,12 @@ tr {
         grid-column: 2/2;
     }  */
 
-    .cata-content-container {
-        
-    }
+    
 }
 
 @media screen and (max-width: 500px) {
     html {
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
 
     table {
