@@ -412,8 +412,8 @@ a:visited {
    
 }
 .post-content-img {
-    max-width: 400px;
-    margin: 50px;
+    max-width: 800px;
+    
 }
 
 .view-more-cont {
@@ -672,7 +672,7 @@ tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 1fr 1fr;
     background-color: var(--bgColor);
-    margin: 0 auto;
+    margin: 4rem auto 4rem auto;
     color: #e5e5e5;
     gap: 20px;
 }
