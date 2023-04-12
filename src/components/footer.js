@@ -10,6 +10,7 @@ const Footer = () => {
                 <h4>Search the site</h4>
                 <Searchbar isBottom={true} />
                 
+                
             </div>
             <div className='footer-sect'>
                 <h4>Content Categories</h4>
@@ -21,6 +22,8 @@ const Footer = () => {
                 </ul>
             </div>
             <div className='footer-sect'>
+                <h4>About us</h4>
+                <span><Link to='/authors'>Our Authors</Link></span>
                 <h4>Contact Us</h4>
                 <span>© 2023 Deskego.com</span>
             </div>

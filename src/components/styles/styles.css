@@ -479,6 +479,48 @@ a:visited {
 
 }
 
+.authors-content-container {
+    display: grid;
+    max-width: 1190px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.authors-details-description {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.authors-best-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.authors-bot-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.authors-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 4rem;
+}
+
+.authors-details-head {
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: var(--uiFont);
+}
+
+.authors-details-head ~ h1 {
+    margin-bottom: 2rem;
+}
 
 
 
@@ -631,7 +673,7 @@ tr {
     max-width: 300px;
 }
 
-.archive-list> li:hover, .navCat:hover, #site-logo:hover, .search-results-li:hover, #searchBtn:hover, .footer-list > li:hover {
+.archive-list-entry > a:hover, .card-author-name:hover, .archive-author-details:hover, .navCat:hover, #site-logo:hover, .search-results-li:hover, #searchBtn:hover, .footer-list > li:hover {
     color: var(--highlighted);
     cursor: pointer;
 }
@@ -714,7 +756,16 @@ tr {
     list-style-type: none;
 }
 
+.authors-details-container {
+    display: flex;
+}
 
+.authors-details-avatar {
+    max-width: 400px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
 
 @media screen and (min-width:1024px) {
     
@@ -724,11 +775,11 @@ tr {
     }
 
     .top-sect-header-txt {
-        padding: 5px 30px 30px 30px;
+        padding: 1rem auto 0rem auto;
         text-align: center;
     }
     .blogpost-body-container {
-        grid-template-columns: 1fr minmax(0,auto) minmax(200px, 1fr);
+        grid-template-columns: minmax(200px, 1fr) minmax(0,auto) minmax(200px, 1fr);
         max-width: 1190px;
         
     }
@@ -757,7 +808,7 @@ tr {
     }
 
     .top-sect-header {
-        padding: 5px 30px 30px 30px;
+        padding: 0rem auto 0rem auto;
         text-align: center;
     }
 
@@ -766,12 +817,14 @@ tr {
         padding: 0px 50px 50px 50px;
     }
     .blogpost-body-container {
-        grid-template-columns: minmax(0,auto) 1fr minmax(0,auto);
+        grid-template-columns: minmax(0,auto) minmax(200px, 2fr) minmax(0,auto);
         max-width: 1190px;
     }
     .side-nav-wrap {
         margin-left: 0;
     }
+
+    
 }
 
 @media screen and (max-width:956px) {
@@ -780,6 +833,11 @@ tr {
     }
     .blogpost-body-container {
         grid-template-columns: 1fr;
+    }
+
+    .authors-details-container {
+        flex-direction: column;
+        align-items: center;
     }
 }
 

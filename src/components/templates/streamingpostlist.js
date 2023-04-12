@@ -26,21 +26,24 @@ const StreamingPostList = ({ data, pageContext }) => {
       <ul className='archive-list'>
         {blogPosts.map(blogPost => (
           <li key={blogPost.node.slug}>
-            <Link to={`/${blogPost.node.slug}`}>
+            
               <div className='archive-list-entry'>
+              <Link to={`/${blogPost.node.slug}`}>
                 <span>{blogPost.node.postTitle}</span>
+                </Link>
                 <div className='archive-author-details'>
-                  
+                <Link to={`/authors/${blogPost.node.soleAuthor[0].slug}`}>
                   <div className='archive-avatar-div'>
                     <div className='archive-avatar-img-container'>
                     <GatsbyImage image={blogPost.node.soleAuthor[0].avatar.gatsbyImageData} alt={`${blogPost.node.soleAuthor[0].name}'s avatar`}></GatsbyImage>
                     </div>
                     {blogPost.node.soleAuthor[0].name}
                   </div>
+                  </Link>
                   <span className='card-post-date'>{blogPost.node.createdAt}</span>
                 </div>
               </div>
-              </Link>
+              
           </li>
         ))}
       </ul>
@@ -86,6 +89,7 @@ export const query = graphql`
                         gatsbyImageData
                     }
                     name
+                    slug
                     }
             }
         }

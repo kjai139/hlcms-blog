@@ -29,6 +29,7 @@ const BotBlock = () => {
                       gatsbyImageData
                     }
                     name
+                    slug
                 }
               }
             }
@@ -55,11 +56,11 @@ const BotBlock = () => {
                     </Link>
                     <div className="card-author-block">
                     <div className="card-author-avatar">
-                    {node.node.soleAuthor ? <GatsbyImage image={node.node.soleAuthor[0].avatar.gatsbyImageData} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} />: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
+                    {node.node.soleAuthor ? <Link to={`/authors/${node.node.soleAuthor[0].slug}`}><GatsbyImage image={node.node.soleAuthor[0].avatar.gatsbyImageData} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} /></Link>: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
                         
                         </div>
                         <div className="card-author-name">
-                        {node.node.soleAuthor ? node.node.soleAuthor[0].name : undefined}
+                        {node.node.soleAuthor ? <Link to={`/authors/${node.node.soleAuthor[0].slug}`}>{node.node.soleAuthor[0].name}</Link> : undefined}
                         </div>
                         <span className='card-post-date'>{node.node.createdAt}</span>
 
