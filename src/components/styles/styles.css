@@ -627,6 +627,9 @@ tr {
     margin-bottom: 1rem;
 }
 
+.post-content-img.small-img {
+    max-width: 300px;
+}
 
 .archive-list> li:hover, .navCat:hover, #site-logo:hover, .search-results-li:hover, #searchBtn:hover, .footer-list > li:hover {
     color: var(--highlighted);

@@ -4,8 +4,9 @@ import Seo from "../../components/seo"
 import Topblock from '../../components/topblock'
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import SideNavBar from '../../components/sideNav'
+
 
 import { useRef } from 'react'
 import { useEffect } from 'react'
@@ -94,11 +95,19 @@ const BlogPosts = (props) => {
           }
         },
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
-          // console.log(node.data, 'embedded asset node')
-          
+          // console.log(node.data.target.gatsbyImageData)
+          // console.log(node.data.target.description)
+
+          let image = getImage(node.data.target)
+          console.log(image)
           return (
-            <div className='post-content-img'>
-            <GatsbyImage image={node.data.target.gatsbyImageData} alt={node.data.target.description} />
+            <div className={image.width < 600 ? 'post-content-img small-img' : 'post-content-img'}>
+              
+              <GatsbyImage 
+              image={image}
+  
+              alt={node.data.target.description ? node.data.target.description : 'a dinosaur'}/>
+            
             </div>
           )
           
@@ -135,7 +144,7 @@ const BlogPosts = (props) => {
       <div id="App"> 
       <div id="top-section-container">
         <Topblock headerTitle={props.data.contentfulBlogPost.postTitle}></Topblock>
-        {/* {props.data.contentfulBlogPost.thumbnail && <div className='post-thumbnail'><GatsbyImage image={props.data.contentfulBlogPost.thumbnail.gatsbyImageData} alt={props.data.contentfulBlogPost.thumbnail.description}/></div>} */}
+       
       </div>
       <div className='blogpost-body-container'>
         <SideNavBar contentArr={contentArr} />
