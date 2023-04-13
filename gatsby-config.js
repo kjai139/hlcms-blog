@@ -5,9 +5,10 @@ require('dotenv').config()
  */
 module.exports = {
   siteMetadata: {
-    title: `Deskego.com`,
-    siteUrl: `https://deskego.com`,
-    description: 'Blog site for the most updated tech gear recommendations',
+    title: `Deskego`,
+    siteUrl: `https://www.deskego.com`,
+    description: 'Discover the ultimate guide to creating your perfect desk setup for office work, gaming, or streaming. Explore expert recommendations, tips, and reviews on ergonomic solutions, space-saving ideas, and the latest accessories to enhance your workspace.',
+    logo: 'https://images.ctfassets.net/z6w0khw4r6q1/4gE0xQWPfopxSspwb62gBJ/d956f16d7cd8a5fb17c9312de2de8b86/logo.png',
   },
   plugins: [
     "gatsby-plugin-image",
