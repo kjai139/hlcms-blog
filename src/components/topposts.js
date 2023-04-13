@@ -68,7 +68,7 @@ const TopPosts = () => {
                         <div className="card-author-avatar">
                        
                             {node.node.soleAuthor ? <Link to={`/authors/${node.node.soleAuthor[0].slug}`}><GatsbyImage image={authorAvatar} alt={node.node.soleAuthor ? `${node.node.soleAuthor[0].name}'s avatar` : undefined} /></Link>: <StaticImage src="../images/default-portrait.jpg" alt={node.node.author ? node.node.author[0] : 'author avatar'}></StaticImage>}
-                       
+                    
                         </div>
                         <div className="card-author-name">
                        

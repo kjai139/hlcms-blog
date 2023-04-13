@@ -17,7 +17,7 @@ const AuthorPage = ({data}) => {
             <div className='authors-content-container'>
                 {data.allContentfulAuthorInfo.edges ? 
                 data.allContentfulAuthorInfo.edges.map((node) => {
-                    console.log(node.node)
+                    // console.log(node.node)
                     return (
                         <div className="bot-nav-cards" key={node.node.contentful_id}>
                     <div className="card-img-container">
