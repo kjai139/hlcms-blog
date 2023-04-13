@@ -3,10 +3,11 @@ require('dotenv').config()
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const siteUrl = process.env.MY_SITE_URL
 module.exports = {
   siteMetadata: {
     title: `Deskego`,
-    siteUrl: `https://www.deskego.com`,
+    siteUrl: process.env.MY_SITE_URL,
     description: 'Discover the ultimate guide to creating your perfect desk setup for office work, gaming, or streaming. Explore expert recommendations, tips, and reviews on ergonomic solutions, space-saving ideas, and the latest accessories to enhance your workspace.',
     logo: 'https://images.ctfassets.net/z6w0khw4r6q1/4gE0xQWPfopxSspwb62gBJ/d956f16d7cd8a5fb17c9312de2de8b86/logo.png',
   },
@@ -14,6 +15,39 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `{
+          allContentfulBlogPost {
+            edges {
+              node {
+                slug
+                updatedAt
+              }
+            }
+          }
+        }`,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allContentfulBlogPost: { nodes: allPosts },
+        }) => {
+          return allPosts.map(post => {
+            return {
+              path:`/${post.slug}`,
+              modifiedGmt: post.updatedAt,
+            }
+          })
+        },
+        serialize: ({path, modifiedGmt}) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        }
+      }
+      
+    },
     {
       resolve: `gatsby-source-contentful`,
       options: {
