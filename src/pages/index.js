@@ -34,6 +34,6 @@ const HomePage = () => {
 
 
 
-export const Head = () => <Seo title={'Deskego - Home'} description={'Deskego, the most updated reviews on computer related gear'} />
+export const Head = () => <Seo title={'Deskego - Home'} description={'Discover the ultimate guide to creating your perfect desk setup for office work, gaming, or streaming. Explore expert recommendations, tips, and reviews on ergonomic solutions, space-saving ideas, and the latest accessories to enhance your workspace.'} />
 
 export default HomePage
