@@ -30,9 +30,10 @@ module.exports = {
         }`,
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({
-          data
+          allContentfulBlogPost
         }) => {
-          const posts = data.allContentfulBlogPost.edges.nodes
+          
+          const posts = allContentfulBlogPost.edges.map(edges => edges.node)
           return posts.map(post => {
             return {
               path:`/${post.slug}`,
