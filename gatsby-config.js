@@ -3,7 +3,7 @@ require('dotenv').config()
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-const siteUrl = process.env.MY_SITE_URL
+const theSite = process.env.MY_SITE_URL
 module.exports = {
   siteMetadata: {
     title: `Deskego`,
@@ -33,7 +33,7 @@ module.exports = {
             
           
         }`,
-        resolveSiteUrl: () => siteUrl,
+        resolveSiteUrl: () => theSite,
         resolvePages: ({
           allContentfulBlogPost: { nodes: allPosts }
         }) => {
@@ -48,10 +48,11 @@ module.exports = {
         },
         serialize: ({path, modifiedGmt}) => {
           return {
-            url: siteUrl + path,
+            url: theSite + path,
             lastmod: modifiedGmt,
           }
-        }
+        },
+        
       }
       
     },
