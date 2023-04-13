@@ -18,23 +18,28 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        query: `{
+        query: `
+        {
           allContentfulBlogPost {
-            edges {
-              node {
-                slug
-                updatedAt
+             
+                nodes {
+                  slug
+                  updatedAt
+                  postTitle
+                  excerpt
+                }
               }
-            }
-          }
+              
+            
+          
         }`,
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({
-          allContentfulBlogPost
+          allContentfulBlogPost: { nodes: allPosts }
         }) => {
           
-          const posts = allContentfulBlogPost.edges.map(edges => edges.node)
-          return posts.map(post => {
+          
+          return allPosts.map(post => {
             return {
               path:`/${post.slug}`,
               modifiedGmt: post.updatedAt,
@@ -43,7 +48,7 @@ module.exports = {
         },
         serialize: ({path, modifiedGmt}) => {
           return {
-            url: path,
+            url: siteUrl + path,
             lastmod: modifiedGmt,
           }
         }
