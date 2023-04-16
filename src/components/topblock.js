@@ -85,7 +85,7 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
                     {headerTxt? <p className="top-sect-header-txt"> {headerTxt}</p> : null}
                         
     
-                    {curPage === 'home' ? <div className="header-small-img"><StaticImage src='../images/whiteDesk.png' alt="a white desk"></StaticImage></div> : null}
+                    {curPage === 'home' ? <div className="header-small-img"><StaticImage src='../images/Deskego-icon-transparent.png' alt="a white mug"></StaticImage></div> : null}
                 </div>
             </div>
             </header>
