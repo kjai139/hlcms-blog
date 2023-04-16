@@ -27,7 +27,7 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
               }
         }
     `)
-
+        console.log(curPage)
     // console.log(data, 'data from topblock')
     // console.log(inCat, curPage)
     return (
@@ -86,6 +86,9 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
                         
     
                     {curPage === 'home' ? <div className="header-small-img"><StaticImage src='../images/Deskego-icon-transparent.png' alt="a white mug"></StaticImage></div> : null}
+                    {curPage === 'home-office' ? <div className="header-small-img"><StaticImage src='../images/pageLogos/house-icon.png' alt="home office icon"></StaticImage></div> : null}
+                    {curPage === 'streaming' ? <div className="header-small-img"><StaticImage src='../images/pageLogos/streaming-icon.png' alt="streaming icon"></StaticImage></div> : null}
+                    {curPage === 'gaming' ? <div className="header-small-img"><StaticImage src='../images/pageLogos/gaming-icon.png' alt="gaming icon"></StaticImage></div> : null}
                 </div>
             </div>
             </header>

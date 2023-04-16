@@ -19,7 +19,7 @@ const OfficePostList = ({ data, pageContext }) => {
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock headerTitle='Home Office Posts Archive' inArc={true}/>
+        <Topblock curPage='home-office' headerTitle='Home Office Posts Archive' inArc={true}/>
         </div>
     <div className='archive-content'>
       {/* Render list of blog posts */}

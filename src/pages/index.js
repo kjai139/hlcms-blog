@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock curPage="home" headerTitle='Home'/>
+        <Topblock curPage="home" headerTitle='DESKEGO'/>
         <TopPosts />
       </div>
     <BotBlock />

@@ -10,7 +10,7 @@ import { Link } from 'gatsby'
 const CategoryPost = (props) => {
     // console.log(props.pageContext.id, 'contxt id from CategoryPost')
     const data = props.data.allContentfulBlogPost.edges
-    
+    // console.log(data[0].node.catRef.slug)
     // console.log(data[0].node, 'data from CategoryPost')
     return (
         <div id="App"> 
