@@ -19,7 +19,7 @@ const GamingPostList = ({ data, pageContext }) => {
   return (
     <div id="App"> 
       <div id="top-section-container">
-        <Topblock headerTitle='Reviews Archive' inArc={true}/>
+        <Topblock headerTitle='Gaming Posts Archive' inArc={true}/>
         </div>
     <div className='archive-content'>
       {/* Render list of blog posts */}
