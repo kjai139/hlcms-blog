@@ -14,13 +14,13 @@ const CategoryPost = (props) => {
 
     const catString = props.pageContext.slug
     const CategoryN = catString.charAt(0).toUpperCase() + catString.slice(1)
-    // console.log(data[0].node.catRef.slug)
+    console.log(data[0].node.catRef)
     // console.log(data[0].node, 'data from CategoryPost')
     return (
         
         <div id="App"> 
              <div id="top-section-container">
-                <Topblock inCat={true} curPage={CategoryN} headerTitle={CategoryN}></Topblock>
+                <Topblock inCat={true} curPage={data[0].node.catRef.categoryName? data[0].node.catRef.categoryName: CategoryN} headerTitle={data[0].node.catRef.categoryName ? data[0].node.catRef.categoryName : CategoryN}></Topblock>
             </div>
             <div className='bot-section-container'>
             <div className='cata-content-container'>
