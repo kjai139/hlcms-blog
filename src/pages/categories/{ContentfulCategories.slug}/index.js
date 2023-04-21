@@ -14,7 +14,7 @@ const CategoryPost = (props) => {
 
     const catString = props.pageContext.slug
     const CategoryN = catString.charAt(0).toUpperCase() + catString.slice(1)
-    console.log(data[0].node.catRef)
+    // console.log(data[0].node.catRef)
     // console.log(data[0].node, 'data from CategoryPost')
     return (
         
