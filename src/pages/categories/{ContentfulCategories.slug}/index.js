@@ -10,12 +10,17 @@ import { Link } from 'gatsby'
 const CategoryPost = (props) => {
     // console.log(props.pageContext.id, 'contxt id from CategoryPost')
     const data = props.data.allContentfulBlogPost.edges
+    // console.log(props)
+
+    const catString = props.pageContext.slug
+    const CategoryN = catString.charAt(0).toUpperCase() + catString.slice(1)
     // console.log(data[0].node.catRef.slug)
     // console.log(data[0].node, 'data from CategoryPost')
     return (
+        
         <div id="App"> 
-            <div id="top-section-container">
-                <Topblock inCat={true} curPage={data[0].node.catRef.slug} headerTitle={data[0].node.catRef.categoryName}></Topblock>
+             <div id="top-section-container">
+                <Topblock inCat={true} curPage={CategoryN} headerTitle={CategoryN}></Topblock>
             </div>
             <div className='bot-section-container'>
             <div className='cata-content-container'>
@@ -71,6 +76,7 @@ const CategoryPost = (props) => {
             <Footer />
 
             </footer>
+           
         </div>
         
     )
@@ -124,7 +130,7 @@ export const query = graphql`
 `
 
 
-export const Head = ({data}) => <Seo title={`Deskego - ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName}`} description={`The most updated blog posts on ${data.allContentfulBlogPost.edges[0].node.catRef.categoryName} | Deskego.com`}></Seo>
+export const Head = (props) => <Seo title={`Deskego - ${props.pageContext.slug.charAt(0).toUpperCase() + props.pageContext.slug.slice(1)}`} description={`The most updated blog posts on ${props.pageContext.slug.charAt(0).toUpperCase() + props.pageContext.slug.slice(1)} | Deskego.com`}></Seo>
 
 
 

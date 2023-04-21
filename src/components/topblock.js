@@ -27,7 +27,7 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
               }
         }
     `)
-        console.log(curPage)
+        // console.log(curPage)
     // console.log(data, 'data from topblock')
     // console.log(inCat, curPage)
     return (
@@ -58,14 +58,14 @@ const Topblock = ({headerTitle, headerTxt, curPage, inCat=false, inArc=false}) =
                                 Gaming
                                 </Link>}
                         </li>
-                        <li className={curPage === 'streaming' ? 'selected navCat' : 'navCat'}>
+                        {/* <li className={curPage === 'streaming' ? 'selected navCat' : 'navCat'}>
                             
                             {inArc ? <Link to='/categories/streaming' replace={true}>Streaming </Link> : <Link to={inCat ? '../streaming' : '../categories/streaming'}>
                                 Streaming
                                 </Link>}
                
                            
-                        </li>
+                        </li> */}
                         <li>
                             <Searchbar />
                             {/* <button id="searchBtn">
