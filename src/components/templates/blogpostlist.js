@@ -52,7 +52,7 @@ const BlogPostList = ({ data, pageContext }) => {
         <ul className='page-nav-list'>
         {Array(numberOfPages).fill().map( (_, i) => {
                 return <li key={`pagination-number${i + 1}`} className={ i === pageNumber ? 'page-nav-entries selected' : 'page-nav-entries'}>
-                   {i === pageNumber ? `${i + 1}` : <Link to={ i === 0 ? `../` : `./${i + 1}`}>{i + 1}</Link>}
+                   {i === pageNumber ? `${i + 1}` : <Link to={ i === 0 ? `../` : `/archive/${i + 1}`}>{i + 1}</Link>}
                     
                 </li>
             })}
