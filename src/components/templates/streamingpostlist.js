@@ -4,7 +4,7 @@ import Topblock from '../topblock';
 import Seo from '../seo';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Footer from '../footer';
-
+import Layout from '../layout';
 
 
 
@@ -17,7 +17,7 @@ const StreamingPostList = ({ data, pageContext }) => {
     // console.log(pageContext)
 
   return (
-    <div id="App"> 
+    <Layout>
       <div id="top-section-container">
         <Topblock curPage='streaming' headerTitle='Streaming Posts Archive' inArc={true}/>
         </div>
@@ -70,7 +70,7 @@ const StreamingPostList = ({ data, pageContext }) => {
       <Footer />
 
       </footer>
-    </div>
+      </Layout>
     
   );
 };

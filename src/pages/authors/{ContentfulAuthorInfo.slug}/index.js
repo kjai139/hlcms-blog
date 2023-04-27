@@ -5,10 +5,11 @@ import Topblock from '../../../components/topblock'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import  Footer  from '../../../components/footer'
 import { Link } from 'gatsby'
+import Layout from '../../../components/layout'
 
 const AuthorPanel = ({data}) => {
         return (
-            <div id="App"> 
+            <Layout>
             <div id="top-section-container">
             <Topblock headerTitle={data.contentfulAuthorInfo.name} headerTxt='Writer' curPage="authors2" inArc={true} inCat={false}></Topblock>
             </div>
@@ -76,7 +77,7 @@ const AuthorPanel = ({data}) => {
             </footer>
 
 
-        </div>
+        </Layout>
         )
 }
 

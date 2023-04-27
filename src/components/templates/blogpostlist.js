@@ -4,6 +4,7 @@ import Topblock from '../topblock';
 import Seo from '../seo';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Footer from '../footer';
+import Layout from '../layout';
 
 
 
@@ -15,7 +16,7 @@ const BlogPostList = ({ data, pageContext }) => {
     // console.log(data.allContentfulBlogPost, 'from blogpostlist')
 
   return (
-    <div id="App"> 
+    <Layout>
       <div id="top-section-container">
         <Topblock headerTitle='Post Archive' curPage="home" inArc={true} />
         </div>
@@ -63,7 +64,7 @@ const BlogPostList = ({ data, pageContext }) => {
       <Footer />
 
       </footer>
-    </div>
+    </Layout>
     
   );
 };

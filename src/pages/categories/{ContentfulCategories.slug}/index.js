@@ -5,6 +5,7 @@ import Topblock from '../../../components/topblock'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import  Footer  from '../../../components/footer'
 import { Link } from 'gatsby'
+import Layout from '../../../components/layout'
 
 
 const CategoryPost = (props) => {
@@ -18,7 +19,7 @@ const CategoryPost = (props) => {
     // console.log(data[0].node, 'data from CategoryPost')
     return (
         
-        <div id="App"> 
+        <Layout> 
              <div id="top-section-container">
                 <Topblock inCat={true} curPage={data[0]? data[0].node.catRef.categoryName: CategoryN} headerTitle={data[0] ? data[0].node.catRef.categoryName : CategoryN}></Topblock>
             </div>
@@ -77,7 +78,7 @@ const CategoryPost = (props) => {
 
             </footer>
            
-        </div>
+        </Layout>
         
     )
 }

@@ -7,7 +7,7 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import SideNavBar from '../../components/sideNav'
 
-
+import Layout from '../../components/layout'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import  Footer  from '../../components/footer'
@@ -141,7 +141,7 @@ const BlogPosts = (props) => {
     }
 
     return (
-      <div id="App"> 
+      <Layout>
       <div id="top-section-container">
         <Topblock headerTitle={props.data.contentfulBlogPost.postTitle}></Topblock>
        
@@ -159,7 +159,7 @@ const BlogPosts = (props) => {
       <Footer />
 
       </footer>
-      </div>
+      </Layout>
 
     )
 }

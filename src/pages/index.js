@@ -1,7 +1,7 @@
 import * as React from "react"
 import Topblock from "../components/topblock"
 import Seo from "../components/seo"
-
+import Layout from "../components/layout"
 import BotBlock from "../components/botblock"
 import TopPosts from "../components/topposts"
 import Footer from "../components/footer"
@@ -12,7 +12,7 @@ const HomePage = () => {
   
 
   return (
-    <div id="App"> 
+    <Layout>
       <div id="top-section-container">
         <Topblock curPage="home" headerTitle='DESKEGO'/>
         <TopPosts />
@@ -27,7 +27,7 @@ const HomePage = () => {
       <Footer />
 
     </footer>
-    </div>
+    </Layout>
   )
 }
 

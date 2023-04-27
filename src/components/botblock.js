@@ -6,7 +6,7 @@ const BotBlock = () => {
     const data = useStaticQuery(graphql`
    
     query{
-        allContentfulBlogPost(skip: 2, limit: 3, sort: {createdAt: DESC}) {
+        allContentfulBlogPost(skip: 2, limit: 5, sort: {createdAt: DESC}) {
             edges {
               node {
                 createdAt(formatString: "MMMM DD, YYYY")
@@ -39,10 +39,11 @@ const BotBlock = () => {
 
     const renderBottomFourPosts = () => {
         return data.allContentfulBlogPost.edges.map(node => 
-            <div className="bot-nav-cards" key={node.node.contentful_id}>
-                    <div className="card-img-container">
+            <div className="home-nav-cards" key={node.node.contentful_id}>
+                    <div className="home-card-img-container">
                     {node.node.thumbnail && <Link to={`${node.node.slug}`}><GatsbyImage image={node.node.thumbnail.gatsbyImageData} alt={'a gatsby image'} /></Link> }
                     </div>
+                    <div className='home-nav-cards-right'>
                     <ul className="tag-list">
                         <li className='dark-b'><Link to={`/categories/${node.node.catRef.slug}`}>{node.node.catRef.categoryName}</Link></li>
                     </ul>
@@ -64,6 +65,7 @@ const BotBlock = () => {
                         </div>
                         <span className='card-post-date'>{node.node.createdAt}</span>
 
+                    </div>
                     </div>
 
                 </div>
